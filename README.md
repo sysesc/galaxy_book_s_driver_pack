@@ -12,7 +12,7 @@ https://rufus.ie/en/
 + "...\sources\boot.wim"
 + "...\windows\system32\recovery\winre.wim"   <-- this one is inside install.wim
 
-I also unzipped the drivers
+I unzipped the drivers from this repo to 'c:\drivers'
 
 ### create mountpoints
 ```cmd
