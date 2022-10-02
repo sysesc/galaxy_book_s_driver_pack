@@ -40,7 +40,7 @@ Dism /Unmount-Image /MountDir:C:\mount\install /Commit
 
 ### Do the above steps for any install.wim again, but with index 2
 ```
-Dism /Mount-Image /ImageFile:"D:\sources\install.wim" /Index:2 /MountDir:C:\mount\boot
+Dism /Mount-Image /ImageFile:"D:\sources\boot.wim" /Index:2 /MountDir:C:\mount\boot
 Add-WindowsDriver -Path "C:\mount\boot" -Driver "C:\drivers" -Recurse
 Dism /Unmount-Image /MountDir:C:\mount\boot /Commit
 ```
@@ -52,4 +52,6 @@ Dism /Unmount-Image /MountDir:C:\mount\boot /Commit
 Dism /Mount-Image /ImageFile:"<path>.wim" /Index:<integer> /MountDir:<folder-path>
 #Example
 Dism /Mount-Image /ImageFile:"D:\sources\install.wim" /Index:1 /MountDir:C:\mount\boot
+
+Dism /Get-ImageInfo /imagefile:<path>.wim
 ```
