@@ -1,3 +1,5 @@
+## Tutorial
+
 ### Get Windows for arm64 
 https://uupdump.net/
 ### Prepare a USB
@@ -45,6 +47,7 @@ Add-WindowsDriver -Path "C:\mount\boot" -Driver "C:\drivers" -Recurse
 Dism /Unmount-Image /MountDir:C:\mount\boot /Commit
 ```
 
+## Other stuff
 
 ### commands
 ```powershell
@@ -53,7 +56,6 @@ Dism /Mount-Image /ImageFile:"<path>.wim" /Index:<integer> /MountDir:"<folder-pa
 Add-WindowsDriver -Path "<destination>" -Driver "<source>" -Recurse
 Dism /Unmount-Image /MountDir:"<mountpoint>" /Commit
 ```
-
 
 ### (optional) Repacking windows files plus added drivers as ISO
 [ADK - Download](https://learn.microsoft.com/en-us/windows-hardware/get-started/adk-install)
