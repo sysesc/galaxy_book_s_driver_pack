@@ -1,8 +1,14 @@
+### Get Windows for arm64 
+https://uupdump.net/
+### Prepare a USB
+https://rufus.ie/en/
++ Its simpler to flash the iso as it is, to the usb
++ You can then add the drivers to the usb separately
 
-### wim images that need to be modified
+### What we will be modifying
 + "...\sources\install.wim"                   
 + "...\sources\boot.wim"
-+ "...\windows\system32\recovery\winre.wim"   <-- is inside install.wim
++ "...\windows\system32\recovery\winre.wim"   <-- this one is inside install.wim
 
 ### create mountpoints
 ```cmd
