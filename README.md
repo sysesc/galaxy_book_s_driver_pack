@@ -53,3 +53,9 @@ Dism /Mount-Image /ImageFile:"<path>.wim" /Index:<integer> /MountDir:"<folder-pa
 Add-WindowsDriver -Path "<destination>" -Driver "<source>" -Recurse
 Dism /Unmount-Image /MountDir:"<mountpoint>" /Commit
 ```
+
+
+### Repacking as ISO
+```
+'C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe' -u2 -m -b"c:\windows_iso_folder\boot\etfsboot.com" "C:\windows_iso_folder" "C:\windows_galaxybook_s.iso"
+```
