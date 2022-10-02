@@ -55,7 +55,7 @@ Dism /Unmount-Image /MountDir:"<mountpoint>" /Commit
 ```
 
 
-### Repacking as ISO
+### (optional) Repacking windows files plus added drivers as ISO
 [ADK - Download](https://learn.microsoft.com/en-us/windows-hardware/get-started/adk-install)
 + select "Deployment Tools" inside the installer
 ```cmd
