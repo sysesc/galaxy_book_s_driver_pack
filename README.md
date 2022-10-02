@@ -12,6 +12,8 @@ https://rufus.ie/en/
 + "...\sources\boot.wim"
 + "...\windows\system32\recovery\winre.wim"   <-- this one is inside install.wim
 
+I also unzipped the drivers
+
 ### create mountpoints
 ```cmd
 md C:\mount\install
@@ -51,10 +53,16 @@ Dism /Unmount-Image /MountDir:C:\mount\boot /Commit
 
 ### commands
 ```powershell
+# infos like index
 Dism /Get-ImageInfo /imagefile:"<path>.wim"
+# mount
 Dism /Mount-Image /ImageFile:"<path>.wim" /Index:<integer> /MountDir:"<folder-path>"
+# add drivers
 Add-WindowsDriver -Path "<destination>" -Driver "<source>" -Recurse
+# Save unmount
 Dism /Unmount-Image /MountDir:"<mountpoint>" /Commit
+# Discard unmount
+Dism /Unmount-Image /MountDir:C:\mount\winre /discard
 ```
 
 ### (optional) Repacking windows files plus added drivers as ISO
