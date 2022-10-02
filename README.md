@@ -13,6 +13,7 @@ https://rufus.ie/en/
 + "...\windows\system32\recovery\winre.wim"   <-- this one is inside install.wim
 
 I unzipped the drivers from this repo to 'c:\drivers'
+And flashed the windows iso from uupdump via rufus do an USB stick called D:\ in my case.
 
 ### create mountpoints
 ```cmd
