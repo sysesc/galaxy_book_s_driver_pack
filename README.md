@@ -27,7 +27,7 @@ should display
 Deployment Image Servicing and Management tool
 Version: 10.0.22621.1
 
-Details for image : C:\winiso\sources\install.wim
+Details for image : D:\sources\install.wim
 
 Index : 1
 Name : Windows 11 Pro
