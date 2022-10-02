@@ -20,7 +20,7 @@ And flashed the windows iso from uupdump via rufus do an USB stick called D:\ in
 ### check your USB
 
 ```cmd
-Dism /Get-ImageInfo /imagefile:"C:\winiso\sources\install.wim"
+Dism /Get-ImageInfo /imagefile:"D:\sources\install.wim"
 ```
 should display
 ```
