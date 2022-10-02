@@ -25,7 +25,7 @@ md C:\mount\winre
 ### mount images
 ```cmd
 Dism /Mount-Image /ImageFile:"D:\sources\install.wim" /Index:1 /MountDir:"C:\mount\install"
-Dism /Mount-Image /ImageFile:"D:\sources\boot.wim" /Index:1 /MountDir:"C:\mount\boot"
+Dism /Mount-Image /ImageFile:"D:\sources\boot.wim" /Index:2 /MountDir:"C:\mount\boot"
 Dism /Mount-Image /ImageFile:"C:\mount\install\windows\system32\recovery\winre.wim" /Index:1 /MountDir:"C:\mount\winre"
 ```
 
@@ -43,9 +43,11 @@ Dism /Unmount-Image /MountDir:C:\mount\boot /Commit
 Dism /Unmount-Image /MountDir:C:\mount\install /Commit
 ```
 
-### Do the above steps for any install.wim again, but with index 2
+### (optional) Do the above steps just with install.wim again, but now using index 1
+index 2 is the windows installer.
+index 1 is the WinPE enviroment.
 ```
-Dism /Mount-Image /ImageFile:"D:\sources\boot.wim" /Index:2 /MountDir:C:\mount\boot
+Dism /Mount-Image /ImageFile:"D:\sources\boot.wim" /Index:1 /MountDir:C:\mount\boot
 Add-WindowsDriver -Path "C:\mount\boot" -Driver "C:\drivers" -Recurse
 Dism /Unmount-Image /MountDir:C:\mount\boot /Commit
 ```
