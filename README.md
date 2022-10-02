@@ -46,12 +46,10 @@ Dism /Unmount-Image /MountDir:C:\mount\boot /Commit
 ```
 
 
-### Important commands
+### commands
 ```powershell
-#Sheme
-Dism /Mount-Image /ImageFile:"<path>.wim" /Index:<integer> /MountDir:<folder-path>
-#Example
-Dism /Mount-Image /ImageFile:"D:\sources\install.wim" /Index:1 /MountDir:C:\mount\boot
-
-Dism /Get-ImageInfo /imagefile:<path>.wim
+Dism /Get-ImageInfo /imagefile:"<path>.wim"
+Dism /Mount-Image /ImageFile:"<path>.wim" /Index:<integer> /MountDir:"<folder-path>"
+Add-WindowsDriver -Path "<destination>" -Driver "<source>" -Recurse
+Dism /Unmount-Image /MountDir:"<mountpoint>" /Commit
 ```
