@@ -1,0 +1,66 @@
+*%******************************************************************************************
+*% ACnfgUni.GDL
+*% This file implements the  *BidiQuery, *BidiResponse and *Option elements that correspond
+*% to the Memory,DuplexUnit and PrinterHardDisk features in AutoCnfg.GPD file. The feature
+*% name in the GDL file should exaclty match the corresponding feature and option names in the GPD.
+*%******************************************************************************************
+
+
+*%******************************************************************************************
+*%                                      Duplex Unit
+*%******************************************************************************************
+
+*Feature: DuplexUnit
+{
+    *FeatureType: PRINTER_PROPERTY
+    *BidiQuery: DuplexUnit
+    {
+        *QueryString: "\Printer.Configuration.DuplexUnit:Installed"
+    }
+
+    *BidiResponse: DuplexUnit
+    {
+        *ResponseType: BIDI_BOOL
+        *ResponseData: ENUM_OPTION(DuplexUnit)
+    }
+
+    *Option: FALSE
+    {
+        *BidiValue: BOOL(FALSE)
+    }
+
+    *Option: TRUE
+    {
+        *BidiValue: BOOL(TRUE)
+    }
+}
+
+
+*%******************************************************************************
+*%                            PhotoTray unit
+*%******************************************************************************
+
+*Feature: PhotoTray
+{
+    *FeatureType: PRINTER_PROPERTY
+    *BidiQuery: PhotoTray
+    {
+         *QueryString: "\Printer.Configuration.PhotoTray:Installed"
+    }
+
+    *BidiResponse: PhotoTray
+    {
+         *ResponseType: BIDI_BOOL
+         *ResponseData: ENUM_OPTION(PhotoTray)
+    }
+
+    *Option: FALSE
+    {
+         *BidiValue: BOOL(FALSE)
+    }
+
+    *Option: TRUE
+    {
+         *BidiValue: BOOL(TRUE)
+    }
+}

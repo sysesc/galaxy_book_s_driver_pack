@@ -1,0 +1,172 @@
+/*++
+;
+;Copyright (c) Samsung Electronics Co., Ltd.  All rights reserved.
+;
+;Module Name:
+;    SafiDrv.inf
+;
+;Abstract:
+;    INF file for installing the Samsung Firmware Interface driver.
+;
+;--*/
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+CatalogFile=SafiDrv.cat
+DriverVer = 05/25/2020,11.1.13.591
+
+[DestinationDirs]
+DefaultDestDir = 12
+SafiService_Dir=13
+Resources_Dir=13
+;SafiService_Dir=16422, Samsung\SafiService
+;Resources_Dir=16422, Samsung\SafiService
+SafiDrv_Device_CoInstaller_CopyFiles = 11
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+SafiDrv.sys  = 1
+msvcp140.dll = 1
+vcruntime140.dll = 1
+SafiService.exe = 1
+Samsung.Firmware.dll = 1
+SafiAgent.exe = 1
+SafiIPCLib.dll = 1
+Resources.resources = 1
+Resources.ar-SA.resources = 1 
+Resources.az-Latn-AZ.resources = 1 
+Resources.da-DK.resources = 1 
+Resources.de-DE.resources = 1 
+Resources.en-GB.resources = 1 
+Resources.es-ES.resources = 1 
+Resources.es-MX.resources = 1 
+Resources.fa-IR.resources = 1 
+Resources.fi-FI.resources = 1 
+Resources.fr-CA.resources = 1 
+Resources.fr-FR.resources = 1 
+Resources.he-IL.resources = 1 
+Resources.id-ID.resources = 1 
+Resources.it-IT.resources = 1 
+Resources.ja-JP.resources = 1 
+Resources.kk-KZ.resources = 1 
+Resources.ko-KR.resources = 1 
+Resources.ms-MY.resources = 1 
+Resources.nb-NO.resources = 1 
+Resources.nl-NL.resources = 1 
+Resources.pl-PL.resources = 1 
+Resources.pt-BR.resources = 1 
+Resources.pt-PT.resources = 1 
+Resources.ru-RU.resources = 1 
+Resources.sv-SE.resources = 1 
+Resources.tr-TR.resources = 1 
+Resources.uk-UA.resources = 1 
+Resources.uz-Latn-UZ.resources = 1 
+Resources.zh-CN.resources = 1 
+Resources.zh-HK.resources = 1 
+Resources.zh-TW.resources = 1
+WarningUseOtherDPPort.png = 1
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%SafiDrv.DeviceDesc%=SafiDrv_Device, ACPI\VEN_SAM&DEV_0701&SUBSYS_C17C144D
+
+[SafiDrv_Device.NT]
+CopyFiles=Drivers_Dir
+CopyFiles=SafiService_Dir
+CopyFiles=Resources_Dir
+
+[Drivers_Dir]
+SafiDrv.sys
+
+
+[SafiService_Dir]
+msvcp140.dll
+vcruntime140.dll
+SafiService.exe
+Samsung.Firmware.dll
+SafiIPCLib.dll
+SafiAgent.exe
+
+[Resources_Dir]
+Resources.resources
+Resources.ar-SA.resources
+Resources.az-Latn-AZ.resources
+Resources.da-DK.resources
+Resources.de-DE.resources
+Resources.en-GB.resources
+Resources.es-ES.resources
+Resources.es-MX.resources
+Resources.fa-IR.resources
+Resources.fi-FI.resources
+Resources.fr-CA.resources
+Resources.fr-FR.resources
+Resources.he-IL.resources
+Resources.id-ID.resources
+Resources.it-IT.resources
+Resources.ja-JP.resources
+Resources.kk-KZ.resources
+Resources.ko-KR.resources
+Resources.ms-MY.resources
+Resources.nb-NO.resources
+Resources.nl-NL.resources
+Resources.pl-PL.resources
+Resources.pt-BR.resources
+Resources.pt-PT.resources
+Resources.ru-RU.resources
+Resources.sv-SE.resources
+Resources.tr-TR.resources
+Resources.uk-UA.resources
+Resources.uz-Latn-UZ.resources
+Resources.zh-CN.resources
+Resources.zh-HK.resources
+Resources.zh-TW.resources
+WarningUseOtherDPPort.png
+
+;-------------- Service installation
+[SafiDrv_Device.NT.Services]
+AddService = SafiDrv,%SPSVCINST_ASSOCSERVICE%, SafiDrv_Service_Inst
+AddService = SafiService,0x00000c00, SafiService_ServiceInstall
+
+; -------------- SafiDrv driver install sections
+[SafiDrv_Service_Inst]
+DisplayName    = %SafiDrv.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 1               ; SERVICE_BOOT_START(0), SERVICE_SYSTEM_START(1)
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\SafiDrv.sys
+LoadOrderGroup = Base
+
+; -------------- SAFI service install sections
+[SafiService_ServiceInstall]
+DisplayName    = %SafiService.SVCDESC%
+Description    = %SafiService.SVCDESC%
+ServiceType    = 0x10            ; SERVICE_WIN32_OWN_PROCESS
+StartType      = 2               ; SERVICE_AUTO_START
+ErrorControl   = 0               ; SERVICE_ERROR_NORMAL
+;ServiceBinary  = %16422%\Samsung\SafiService\SafiService.exe
+ServiceBinary  = %13%\SafiService.exe
+LoadOrderGroup = Base
+
+[SafiDrv_Device.NT.Wdf]
+KmdfService =  SafiDrv, SafiDrv_wdfsect
+[SafiDrv_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="Samsung Electronics Co., Ltd."
+DiskName = "SafiDrv Installation Disk"
+SafiDrv.DeviceDesc = "Samsung Firmware Interface Device"
+SafiDrv.SVCDESC = "SafiDrv Service"
+SafiService.SVCDESC = "Samsung Firmware Interface Service"

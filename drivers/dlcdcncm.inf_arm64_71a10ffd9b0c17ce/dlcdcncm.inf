@@ -1,0 +1,725 @@
+;
+; USB CDC NCM Driver setup information file
+; Copyright (c) 2017 - 2022 DisplayLink (UK) Ltd.
+;
+; This file supports:
+;     Windows 10 ARM64
+;
+
+;******************************************************************************
+; Version Section
+;------------------------------------------------------------------------------
+[Version]
+Signature="$Windows NT$"
+PnpLockdown = 1
+; 12/07/2021,3.64.0.20958 For Windows 10 RS1 and later
+DriverVer = 06/14/2022,10.2.7041.0
+Provider=%S_Provider%
+CatalogFile=%S_DriverName%.cat
+Class=net
+ClassGUID={4d36e972-e325-11ce-bfc1-08002be10318}
+
+
+
+;******************************************************************************
+; Manufacturer
+;------------------------------------------------------------------------------
+[Manufacturer]
+; 10.0 - Windows 10 and later
+%S_Mfg%=_Models, ntarm64
+
+;******************************************************************************
+; Models Section
+;------------------------------------------------------------------------------
+[_Models.ntarm64]
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4300&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4301&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4302&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4303&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4304&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4305&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4306&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4307&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4308&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4309&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_430A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_430B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_430C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_430D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_430E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_430F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4310&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4311&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4312&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4313&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4314&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4315&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4316&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4317&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4318&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4319&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_431A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_431B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_431C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_431D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_431E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_431F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4320&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4321&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4322&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4323&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4324&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4325&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4326&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4327&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4328&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4329&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_432A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_432B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_432C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_432D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_432E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_432F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4330&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4331&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4332&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4333&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4334&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4335&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4336&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4337&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4338&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4339&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_433A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_433B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_433C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_433D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_433E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_433F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4340&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4341&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4342&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4343&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4344&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4345&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4346&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4347&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4348&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4349&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_434A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_434B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_434C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_434D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_434E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_434F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4350&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4351&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4352&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4353&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4354&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4355&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4356&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4357&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4358&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4359&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_435A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_435B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_435C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_435D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_435E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_435F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4360&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4361&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4362&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4363&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4364&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4365&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4366&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4367&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4368&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4369&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_436A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_436B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_436C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_436D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_436E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_436F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4370&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4371&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4372&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4373&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4374&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4375&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4376&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4377&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4378&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4379&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_437A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_437B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_437C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_437D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_437E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_437F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4380&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4381&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4382&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4383&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4384&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4385&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4386&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4387&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4388&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4389&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_438A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_438B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_438C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_438D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_438E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_438F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4390&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4391&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4392&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4393&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4394&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4395&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4396&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4397&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4398&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_4399&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_439A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_439B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_439C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_439D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_439E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_439F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43A0&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43A1&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43A2&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43A3&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43A4&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43A5&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43A6&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43A7&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43A8&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43A9&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43AA&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43AB&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43AC&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43AD&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43AE&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43AF&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43B0&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43B1&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43B2&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43B3&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43B4&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43B5&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43B6&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43B7&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43B8&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43B9&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43BA&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43BB&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43BC&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43BD&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43BE&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43BF&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43C0&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43C1&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43C2&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43C3&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43C4&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43C5&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43C6&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43C7&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43C8&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43C9&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43CA&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43CB&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43CC&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43CD&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43CE&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43CF&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43D0&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43D1&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43D2&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43D3&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43D4&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43D5&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43D6&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43D7&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43D8&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43D9&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43DA&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43DB&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43DC&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43DD&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43DE&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43DF&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43E0&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43E1&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43E2&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43E3&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43E4&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43E5&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43E6&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43E7&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43E8&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43E9&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43EA&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43EB&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43EC&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43ED&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43EE&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43EF&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43F0&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43F1&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43F2&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43F3&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43F4&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43F5&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43F6&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43F7&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43F8&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43F9&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43FA&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43FB&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43FC&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43FD&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43FE&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_43FF&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6000&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6001&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6002&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6003&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6004&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6005&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6006&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6007&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6008&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6009&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_600A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_600B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_600C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_600D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_600E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_600F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6010&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6011&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6012&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6013&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6014&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6015&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6016&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6017&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6018&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6019&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_601A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_601B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_601C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_601D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_601E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_601F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6020&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6021&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6022&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6023&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6024&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6025&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6026&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6027&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6028&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6029&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_602A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_602B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_602C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_602D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_602E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_602F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6030&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6031&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6032&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6033&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6034&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6035&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6036&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6037&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6038&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6039&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_603A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_603B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_603C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_603D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_603E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_603F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6040&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6041&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6042&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6043&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6044&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6045&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6046&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6047&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6048&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6049&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_604A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_604B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_604C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_604D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_604E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_604F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6050&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6051&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6052&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6053&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6054&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6055&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6056&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6057&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6058&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_6059&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_605A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_605B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_605C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_605D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_605E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_605F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7000&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7001&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7002&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7003&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7004&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7005&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7006&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7007&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7008&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7009&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_700A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_700B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_700C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_700D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_700E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_700F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7010&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7011&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7012&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7013&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7014&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7015&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7016&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7017&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7018&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_7019&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_701A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_701B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_701C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_701D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8020&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8021&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8022&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8023&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8024&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8025&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8026&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8027&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8028&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8029&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_802A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_802B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_802C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_802D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_802E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_802F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8080&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8100&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8101&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8102&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_8103&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C055&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C056&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C057&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C058&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C059&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C05A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C05B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C05C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C05D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C05E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C05F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C068&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C069&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C06A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C06B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C06C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C06D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C06E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C06F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C300&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C301&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C302&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C303&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C304&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C305&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C306&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C307&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C308&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C309&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C30A&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C30B&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C30C&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C30D&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C30E&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C30F&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C310&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C311&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C312&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C313&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C314&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C316&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C320&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C321&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C322&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C323&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C324&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C325&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C326&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C327&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C328&MI_05
+"DisplayLink Network Adapter NCM"=_Install65.ntarm64,USB\VID_17E9&PID_C329&MI_05
+
+
+;******************************************************************************
+; Control Flags Sections
+;------------------------------------------------------------------------------
+[ControlFlags]
+ExcludeFromSelect=*
+
+
+;******************************************************************************
+; Install Sections
+;------------------------------------------------------------------------------
+[_Install65.ntarm64]
+; NCF_PHYSICAL + NCF_HAS_UI
+Characteristics = 0x84   
+; bus type = PnP Bus: 15 
+BusType         = 15 
+AddReg = _AddReg_SW_65
+CopyFiles=_CopyFiles_sys65
+*IfType            = 0x6 ; IF_TYPE_ETHERNET_CSMACD
+*MediaType         = 0x0 ; NdisMedium802_3
+*PhysicalMediaType = 14  ; NdisPhysicalMedium802_3
+
+
+[_Install65.ntarm64.Services]
+AddService = %S_ServiceName%, 0x00000002, _AddService65_x64, _EventLog65_x64
+
+[_Install65.ntarm64.Wdf]
+KmdfService = %S_ServiceName%,_WdfInstall65
+
+[_AddService65_x64]
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; MANUAL
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\dlcdcncm660.sys
+AddReg=_AddReg_Service, _AddReg_LicenseData
+
+[_EventLog65_x64]
+AddReg=_EventLog_AddReg65_x64
+
+[_EventLog_AddReg65_x64]
+HKR,,EventMessageFile,%REG_EXPAND_SZ%,"%%SystemRoot%%\System32\netevent.dll;%%SystemRoot%%\System32\drivers\dlcdcncm660.sys"
+HKR,,TypesSupported,  %REG_DWORD%, 7
+
+
+;******************************************************************************
+; Registry sections
+;------------------------------------------------------------------------------
+[_AddReg_SW_65]
+HKR, Ndi,               Service,        0, %S_ServiceName%
+HKR, Ndi\Interfaces,    UpperRange,     0, "ndis5" 
+HKR, Ndi\Interfaces,    LowerRange,     0, "ethernet"
+
+HKR,"Ndi\params\*DeviceSleepOnDisconnect","ParamDesc",%REG_SZ%,"Device sleep on disconnect"
+HKR,"Ndi\params\*DeviceSleepOnDisconnect","default",%REG_SZ%,"1"
+HKR,"Ndi\params\*DeviceSleepOnDisconnect\enum","0",%REG_SZ%,"Disabled"
+HKR,"Ndi\params\*DeviceSleepOnDisconnect\enum","1",%REG_SZ%,"Enabled"
+HKR,"Ndi\params\*DeviceSleepOnDisconnect","type",%REG_SZ%,"enum"
+HKR,"Ndi\params\*ModernStandbyWoLMagicPacket","ParamDesc",%REG_SZ%,"Modern Standby WoL Magic Packet"
+HKR,"Ndi\params\*ModernStandbyWoLMagicPacket","default",%REG_SZ%,"1"
+HKR,"Ndi\params\*ModernStandbyWoLMagicPacket\enum","0",%REG_SZ%,"Disabled"
+HKR,"Ndi\params\*ModernStandbyWoLMagicPacket\enum","1",%REG_SZ%,"Enabled"
+HKR,"Ndi\params\*ModernStandbyWoLMagicPacket","type",%REG_SZ%,"enum"
+HKR,"Ndi\params\*PriorityVLANTag","ParamDesc",%REG_SZ%,"Priority & VLAN"
+HKR,"Ndi\params\*PriorityVLANTag","default",%REG_SZ%,"3"
+HKR,"Ndi\params\*PriorityVLANTag\enum","0",%REG_SZ%,"Priority & VLAN Disabled"
+HKR,"Ndi\params\*PriorityVLANTag\enum","1",%REG_SZ%,"Priority Enabled"
+HKR,"Ndi\params\*PriorityVLANTag\enum","2",%REG_SZ%,"VLAN Enabled"
+HKR,"Ndi\params\*PriorityVLANTag\enum","3",%REG_SZ%,"Priority & VLAN Enabled"
+HKR,"Ndi\params\*PriorityVLANTag","type",%REG_SZ%,"enum"
+HKR,"Ndi\params\*SSIdleTimeout","ParamDesc",%REG_SZ%,"SS idle timeout"
+HKR,"Ndi\params\*SSIdleTimeout","base",%REG_SZ%,"10"
+HKR,"Ndi\params\*SSIdleTimeout","default",%REG_SZ%,"5"
+HKR,"Ndi\params\*SSIdleTimeout","max",%REG_SZ%,"60"
+HKR,"Ndi\params\*SSIdleTimeout","min",%REG_SZ%,"1"
+HKR,"Ndi\params\*SSIdleTimeout","step",%REG_SZ%,"1"
+HKR,"Ndi\params\*SSIdleTimeout","type",%REG_SZ%,"long"
+HKR,"Ndi\params\*SSIdleTimeoutScreenOff","ParamDesc",%REG_SZ%,"SS idle timeout(Screen off)"
+HKR,"Ndi\params\*SSIdleTimeoutScreenOff","base",%REG_SZ%,"10"
+HKR,"Ndi\params\*SSIdleTimeoutScreenOff","default",%REG_SZ%,"3"
+HKR,"Ndi\params\*SSIdleTimeoutScreenOff","max",%REG_SZ%,"60"
+HKR,"Ndi\params\*SSIdleTimeoutScreenOff","min",%REG_SZ%,"1"
+HKR,"Ndi\params\*SSIdleTimeoutScreenOff","step",%REG_SZ%,"1"
+HKR,"Ndi\params\*SSIdleTimeoutScreenOff","type",%REG_SZ%,"long"
+HKR,"Ndi\params\*SelectiveSuspend","ParamDesc",%REG_SZ%,"Selective Suspend"
+HKR,"Ndi\params\*SelectiveSuspend","default",%REG_SZ%,"1"
+HKR,"Ndi\params\*SelectiveSuspend\enum","0",%REG_SZ%,"Disabled"
+HKR,"Ndi\params\*SelectiveSuspend\enum","1",%REG_SZ%,"Enabled"
+HKR,"Ndi\params\*SelectiveSuspend","type",%REG_SZ%,"enum"
+HKR,"Ndi\params\*SpeedDuplex","ParamDesc",%REG_SZ%,"Speed & Duplex"
+HKR,"Ndi\params\*SpeedDuplex","default",%REG_SZ%,"0"
+HKR,"Ndi\params\*SpeedDuplex\enum","0",%REG_SZ%,"Auto Negotiation"
+HKR,"Ndi\params\*SpeedDuplex\enum","2",%REG_SZ%,"10 Mbps Full Duplex"
+HKR,"Ndi\params\*SpeedDuplex\enum","4",%REG_SZ%,"100 Mbps Full Duplex"
+HKR,"Ndi\params\*SpeedDuplex\enum","6",%REG_SZ%,"1.0 Gbps Full Duplex"
+HKR,"Ndi\params\*SpeedDuplex","type",%REG_SZ%,"enum"
+HKR,"Ndi\params\*WakeOnMagicPacket","ParamDesc",%REG_SZ%,"Wake on Magic Packet"
+HKR,"Ndi\params\*WakeOnMagicPacket","default",%REG_SZ%,"1"
+HKR,"Ndi\params\*WakeOnMagicPacket\enum","0",%REG_SZ%,"Disabled"
+HKR,"Ndi\params\*WakeOnMagicPacket\enum","1",%REG_SZ%,"Enabled"
+HKR,"Ndi\params\*WakeOnMagicPacket","type",%REG_SZ%,"enum"
+HKR,"Ndi\params\NetworkAddress","Default",%REG_SZ%,""
+HKR,"Ndi\params\NetworkAddress","LimitText",%REG_SZ%,"12"
+HKR,"Ndi\params\NetworkAddress","ParamDesc",%REG_SZ%,"MAC address"
+HKR,"Ndi\params\NetworkAddress","UpperCase",%REG_SZ%,"1"
+HKR,"Ndi\params\NetworkAddress","optional",%REG_SZ%,"1"
+HKR,"Ndi\params\NetworkAddress","type",%REG_SZ%,"edit"
+HKR,"Ndi\params\VlanId","ParamDesc",%REG_SZ%,"VLAN ID"
+HKR,"Ndi\params\VlanId","base",%REG_SZ%,"10"
+HKR,"Ndi\params\VlanId","default",%REG_SZ%,"0"
+HKR,"Ndi\params\VlanId","max",%REG_SZ%,"4094"
+HKR,"Ndi\params\VlanId","min",%REG_SZ%,"0"
+HKR,"Ndi\params\VlanId","step",%REG_SZ%,"1"
+HKR,"Ndi\params\VlanId","type",%REG_SZ%,"long"
+HKR,"Ndi\params\WakeOnLinkeStateChangeSupportedByHardware","ParamDesc",%REG_SZ%,"Wake on link change"
+HKR,"Ndi\params\WakeOnLinkeStateChangeSupportedByHardware","default",%REG_SZ%,"0"
+HKR,"Ndi\params\WakeOnLinkeStateChangeSupportedByHardware\enum","0",%REG_SZ%,"Enabled"
+HKR,"Ndi\params\WakeOnLinkeStateChangeSupportedByHardware\enum","2",%REG_SZ%,"Disabled"
+HKR,"Ndi\params\WakeOnLinkeStateChangeSupportedByHardware","type",%REG_SZ%,"enum"
+HKR,"","AllowSuspendOnlyWhenForced",%REG_DWORD%,0x00000001
+HKR,"","BIOSMAC_VIDPID_000",%REG_DWORD%,0x17E94312
+HKR,"","BIOSMAC_VIDPID_001",%REG_DWORD%,0x17E94318
+HKR,"","BIOSMAC_VIDPID_002",%REG_DWORD%,0x17E94320
+HKR,"","BIOSMAC_VIDPID_003",%REG_DWORD%,0x17E94341
+HKR,"","BIOSMAC_VIDPID_004",%REG_DWORD%,0x17E9436C
+HKR,"","BIOSMAC_VIDPID_005",%REG_DWORD%,0x17E9436E
+HKR,"","BIOSMAC_VIDPID_006",%REG_DWORD%,0x17E9436F
+HKR,"","BIOSMAC_VIDPID_007",%REG_DWORD%,0x17E96006
+HKR,"","BIOSMAC_VIDPID_008",%REG_DWORD%,0x17E96013
+HKR,"","BIOSMAC_VIDPID_009",%REG_DWORD%,0x17E96059
+HKR,"","BIOSMAC_VIDPID_Count",%REG_DWORD%,0x0000000a
+HKR,"","MaxRcvLinkSpeed",%REG_DWORD%,0x3B9ACA00
+HKR,"","MaxXmitLinkSpeed",%REG_DWORD%,0x3B9ACA00
+HKR,"","NcmPendingUsbBufferLowerLimit",%REG_DWORD%,0x00000001
+HKR,"","SetFriendlyName",%REG_DWORD%,0x00000001
+HKR,"","StopDataInterfaceWhilePaused",%REG_DWORD%,0x00000000
+
+; turn of the power management feature
+; allow the device to wake the PC off
+; only magic pattern not checked
+HKR,,PnPCapabilities,%REG_DWORD%, 0x100
+
+[_AddReg_Service]
+HKR,Parameters,,,
+
+;******************************************************************************
+; Destination Directories
+;------------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir  = 12  ; %windir%\system32\drivers 
+_CopyFiles_sys65 = 12
+
+;******************************************************************************
+; Disk Layout
+;------------------------------------------------------------------------------
+[SourceDisksNames.arm64]
+1=%S_DiskName%,,0
+
+[SourceDisksFiles.arm64]
+dlcdcncm660.sys=1
+
+
+;******************************************************************************
+; Copy file sections
+;------------------------------------------------------------------------------
+[_CopyFiles_sys65]
+; Note: no string variable possible in this section !
+; Use COPYFLG_NOVERSIONCHECK for each file to suppress pop-up dialogs if newer files are overwritten.
+dlcdcncm660.sys,,,0x00000004
+
+;******************************************************************************
+; Wdf Installation
+;------------------------------------------------------------------------------
+[_WdfInstall65]
+KmdfLibraryVersion = 1.11
+
+;******************************************************************************
+; License data
+;------------------------------------------------------------------------------
+[_AddReg_LicenseData]
+; license data record, created 2021-12-07 11:38:36
+HKR, ParametersTL\License, format, %REG_DWORD%, 4
+HKR, ParametersTL\License, customer, %REG_DWORD%, 1825
+HKR, ParametersTL\License, options, %REG_DWORD%, 0x0000020C  ; Version Platform Vid 
+HKR, ParametersTL\License, begin, %REG_BINARY%, 00,00,00,00,00,00,00,00
+HKR, ParametersTL\License, end, %REG_BINARY%, 00,00,00,00,00,00,00,00
+HKR, ParametersTL\License, version, %REG_DWORD%, 0x00030040  ; v3.64
+HKR, ParametersTL\License, features, %REG_BINARY%, 02,00,00,10,00,00,00,00  ; 0x0000000010000002
+HKR, ParametersTL\License, restrictions, %REG_BINARY%, 00,00,00,00,00,00,00,00  ; 0x0000000000000000
+HKR, ParametersTL\License, extensions, %REG_DWORD%, 0x00000001  ; USB 
+HKR, ParametersTL\License, platforms, %REG_DWORD%, 0x0000000F  ; WinX86 WinX64 WinARM WinARM64 
+HKR, ParametersTL\License\OsDetailsWin, count, %REG_DWORD%, 0
+HKR, ParametersTL\License\OsDetailsMac, count, %REG_DWORD%, 0
+HKR, ParametersTL\License\CpuDetails, count, %REG_DWORD%, 0
+HKR, ParametersTL\License, salt, %REG_BINARY%, ED,D6,FD,40,21,74,DC,A0
+HKR, ParametersTL\License, tag, %REG_BINARY%, 89,7C,FD,02,DE,E1,BE,30,51,5E,C4,2F,DC,2B,5A,86,AA,32,DA,90,92,42,04,4E,ED,98,DE,49,3C,D6,A2,67
+HKR, ParametersTL\License\vidpid, count, %REG_DWORD%, 1
+HKR, ParametersTL\License\vidpid\0000, vidpid, %REG_DWORD%, 0x17E90000  ; VID=0x17E9 PID=0x0000
+
+
+;******************************************************************************
+; Strings
+;------------------------------------------------------------------------------
+[Strings]
+;
+; Non-Localizable Strings, DO NOT MODIFY!
+;
+REG_SZ         = 0x00000000
+REG_MULTI_SZ   = 0x00010000
+REG_EXPAND_SZ  = 0x00020000
+REG_BINARY     = 0x00000001
+REG_DWORD      = 0x00010001
+
+
+;
+; Localizable Strings, modify as required
+;
+; provider
+S_Provider="DisplayLink Corp."
+S_Mfg="DisplayLink"
+
+
+S_VendorDescription="DisplayLink USB Gigabit Network Adapter"
+
+; disk name
+S_DiskName="DisplayLink USB Gigabit Network Adapter driver disk"
+
+; device description
+S_DeviceDesc="DisplayLink USB Gigabit Network Adapter"
+
+; driver name
+S_DriverName="dlcdcncm"
+
+; service name
+S_ServiceName="dlcdcncm"
+
+;;;;;;;;;;;;;;;;;;;;;; EOF ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

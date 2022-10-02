@@ -1,0 +1,337 @@
+;*************************************************************************************
+;
+; Name		: ss_conn_usb_driver2.inf
+;
+; Function	: Install SAMSUNG Mobile USB Connectivity Device Driver V2
+;        
+; Copyright (c) DEVGURU Co., Ltd. (www.devguru.co.kr)
+;
+;*************************************************************************************
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=USB
+ClassGuid={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%Provider%
+DriverVer=09/14/2021,2.17.16.0
+CatalogFile=ss_conn_usb_driver2.cat
+
+
+; ================= Class section =====================
+
+;[ClassInstall32]
+;Addreg=SampleClassReg     
+
+;[SampleClassReg]
+;HKR,,,0,%ClassName%
+;HKR,,Icon,,-5
+
+
+; ================= Device section =====================
+
+[Manufacturer]
+%ssud%=ssud, NTx86, NTx86.6.1, NTamd64, NTamd64.6.1, NTarm64
+
+; For Win2K
+[ssud]
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_685D&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_685E&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6860&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6861&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6862&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6864&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6866&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6867&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_686C&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_A50B&CONN2
+
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_685D&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_685E&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6860&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6861&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6862&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6864&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6866&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6867&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_686C&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_A50B&CONN3
+
+; For XP and later
+[ssud.NTx86]
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_685D&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_685E&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6860&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6861&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6862&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6864&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6866&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6867&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_686C&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_A50B&CONN2
+
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_685D&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_685E&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6860&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6861&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6862&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6864&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6866&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6867&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_686C&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_A50B&CONN3
+
+[ssud.NTx86.6.1]
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_685D&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_685E&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6860&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6861&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6862&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6864&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6866&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6867&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686C&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_A50B&CONN2
+
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_685D&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_685E&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6860&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6861&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6862&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6864&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6866&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6867&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_686C&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_A50B&CONN3
+
+[ssud.NTamd64]
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_685D&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_685E&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6860&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6861&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6862&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6864&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6866&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_6867&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_686C&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install.CoInst, USB\VID_04E8&PID_A50B&CONN2
+
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_685D&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_685E&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6860&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6861&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6862&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6864&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6866&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_6867&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_686C&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup.CoInst, USB\VID_04E8&PID_A50B&CONN3
+
+[ssud.NTamd64.6.1]
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_685D&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_685E&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6860&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6861&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6862&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6864&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6866&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6867&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686C&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_A50B&CONN2
+
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_685D&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_685E&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6860&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6861&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6862&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6864&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6866&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6867&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_686C&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_A50B&CONN3
+
+[ssud.NTarm64]
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_685D&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_685E&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6860&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6861&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6862&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6864&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6866&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6867&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686C&CONN2
+%SAMSUNG.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_A50B&CONN2
+
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_685D&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_685E&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6860&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6861&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6862&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6864&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6866&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_6867&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_686C&CONN3
+%SAMSUNG.DeviceDesc% = ssud.Install.NoEasySetup, USB\VID_04E8&PID_A50B&CONN3
+
+
+[ssud.Install.NT]
+CopyFiles=ssud.NT.CopyFiles, ss_conn_launcher_CopyFiles
+
+[ssud.Install.NT.Services]
+AddService = ss_conn_usb_driver2, %SPSVCINST_ASSOCSERVICE%, ssud.AddService
+AddService = ss_conn_launcher_service, 0x00000800, ss_conn_launcher.AddService
+
+[ssud.NT.CopyFiles]
+ss_conn_usb_driver2.sys
+
+[ssud.Install.NT.Wdf]
+KmdfService = ss_conn_usb_driver2, ss_conn_usb_driver2_wdfsect
+
+
+[ssud.Install.NoEasySetup.NT]
+CopyFiles=ssud.NT.CopyFiles
+
+[ssud.Install.NoEasySetup.NT.Services]
+AddService = ss_conn_usb_driver2, %SPSVCINST_ASSOCSERVICE%, ssud.AddService
+
+[ssud.Install.NoEasySetup.NT.Wdf]
+KmdfService = ss_conn_usb_driver2, ss_conn_usb_driver2_wdfsect
+
+
+[ssud.Install.CoInst.NT]
+CopyFiles=ssud.NT.CopyFiles, ss_conn_launcher_CopyFiles
+
+[ssud.Install.CoInst.NT.Services]
+AddService = ss_conn_usb_driver2, %SPSVCINST_ASSOCSERVICE%, ssud.AddService
+AddService = ss_conn_launcher_service, 0x00000800, ss_conn_launcher.AddService
+
+[ssud.Install.CoInst.NT.Wdf]
+KmdfService = ss_conn_usb_driver2, ss_conn_usb_driver2_wdfsect
+
+[ssud.Install.CoInst.NT.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+[CoInstaller_CopyFiles]
+WdfCoInstaller01007.dll
+
+[CoInstaller_AddReg]
+HKR,,CoInstallers32,0x00010000, "WdfCoInstaller01007.dll,WdfCoInstaller"
+
+
+[ssud.Install.NoEasySetup.CoInst.NT]
+CopyFiles=ssud.NT.CopyFiles
+
+[ssud.Install.NoEasySetup.CoInst.NT.Services]
+AddService = ss_conn_usb_driver2, %SPSVCINST_ASSOCSERVICE%, ssud.AddService
+
+[ssud.Install.NoEasySetup.CoInst.NT.Wdf]
+KmdfService = ss_conn_usb_driver2, ss_conn_usb_driver2_wdfsect
+
+[ssud.Install.NoEasySetup.CoInst.NT.CoInstallers]
+AddReg=CoInstaller_AddReg
+CopyFiles=CoInstaller_CopyFiles
+
+
+[ssud.Install.NTarm64]
+CopyFiles=ssud.NTarm64.CopyFiles, ss_conn_launcher_CopyFiles
+
+[ssud.Install.NTarm64.Services]
+AddService = ss_conn_usb_driver2, %SPSVCINST_ASSOCSERVICE%, ssud.AddService
+AddService = ss_conn_launcher_service, 0x00000800, ss_conn_launcher.AddService
+
+[ssud.NTarm64.CopyFiles]
+ss_conn_usb_driver2.sys
+
+[ssud.Install.NTarm64.Wdf]
+KmdfService = ss_conn_usb_driver2, ss_conn_usb_driver2_wdfsect
+
+[ssud.Install.NTarm64.CoInstallers]
+AddReg=CoInstaller_AddReg_NTarm64
+CopyFiles=CoInstaller_CopyFiles_NTarm64
+
+[CoInstaller_CopyFiles_NTarm64]
+; No CopyFiles
+
+[CoInstaller_AddReg_NTarm64]
+; No AddReg
+
+
+[ssud.Install.NoEasySetup.NTarm64]
+CopyFiles=ssud.NTarm64.CopyFiles
+
+[ssud.Install.NoEasySetup.NTarm64.Services]
+AddService = ss_conn_usb_driver2, %SPSVCINST_ASSOCSERVICE%, ssud.AddService
+
+[ssud.Install.NoEasySetup.NTarm64.Wdf]
+KmdfService = ss_conn_usb_driver2, ss_conn_usb_driver2_wdfsect
+
+[ssud.Install.NoEasySetup.NTarm64.CoInstallers]
+AddReg=CoInstaller_AddReg_NTarm64
+CopyFiles=CoInstaller_CopyFiles_NTarm64
+
+
+
+[ss_conn_usb_driver2_wdfsect]
+KmdfLibraryVersion = 1.7
+
+[ssud.AddService]
+DisplayName    = %ssud.SvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\ss_conn_usb_driver2.sys
+LoadOrderGroup = Base
+
+[ss_conn_launcher.AddService]
+DisplayName    = %ss_conn_launcher.SvcDesc%
+ServiceType    = 0x00000010         ; SERVICE_WIN32_OWN_PROCESS
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %11%\Samsung\EasySetup\ss_conn_launcher.exe
+
+[SourceDisksNames.x86]
+1=%Disk_Description%,,,\i386
+2=%Disk_Description%,,,
+
+[SourceDisksNames.amd64]
+1=%Disk_Description%,,,\amd64
+2=%Disk_Description%,,,
+
+[SourceDisksNames.arm64]
+1=%Disk_Description%,,,\arm64
+2=%Disk_Description%,,,
+
+[SourceDisksFiles.x86]
+ss_conn_usb_driver2.sys = 1
+WdfCoInstaller01007.dll=1 ; make sure the number matches with SourceDisksNames
+ss_conn_launcher.exe = 1
+SamsungDeXEasySetup.exe = 2
+
+[SourceDisksFiles.amd64]
+ss_conn_usb_driver2.sys = 1
+WdfCoInstaller01007.dll=1 ; make sure the number matches with SourceDisksNames
+ss_conn_launcher.exe = 1
+SamsungDeXEasySetup.exe = 2
+
+[SourceDisksFiles.arm64]
+ss_conn_usb_driver2.sys = 1
+ss_conn_launcher.exe = 1
+SamsungDeXEasySetup.exe = 2
+
+[DestinationDirs]
+DefaultDestDir = 12
+CoInstaller_CopyFiles = 11
+ss_conn_launcher_CopyFiles = 11, Samsung\EasySetup
+
+[ss_conn_launcher_CopyFiles]
+ss_conn_launcher.exe,,,0x00004000
+SamsungDeXEasySetup.exe,,,0x00004000
+
+[Strings]
+Provider="SAMSUNG Electronics Co., Ltd."
+ssud="SAMSUNG Electronics Co., Ltd."
+Disk_Description="ss_conn_usb_driver2 Installation Disk"
+SAMSUNG.DeviceDesc="SAMSUNG Mobile USB Connectivity Device V2"
+ssud.SvcDesc="SAMSUNG Mobile USB Connectivity Device Driver V2"
+ss_conn_launcher.SvcDesc="SAMSUNG Mobile USB Connectivity Launcher"
+SPSVCINST_ASSOCSERVICE= 0x00000002

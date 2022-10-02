@@ -1,0 +1,62 @@
+;
+; DCHUComponentTest.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=SoftwareComponent
+ClassGuid={5c4c3332-344d-483c-8739-259e934c9cc8}
+Provider=%ManufacturerName%
+CatalogFile=SamsungOsdService.cat
+DriverVer = 12/21/2019,1.0.0.7
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%SamsungOSDService.DeviceDesc%=SamsungOSDService_Device, SWC\VEN_SAMS&PID_0906
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+SamsungOSD.exe = 1
+SamsungOSDService.exe = 1
+vcruntime140.dll = 1
+
+[DestinationDirs]
+DefaultDestDir = 13  ; copy to driverstore
+;DefaultDestDir = 16427
+
+[SamsungOSDService_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+SamsungOSD.exe
+SamsungOSDService.exe
+vcruntime140.dll
+
+;-------------- Service installation
+[SamsungOSDService_Device.NT.Services]
+AddService = , 0x00000002
+AddService = SamsungOSDService,0x00000800, SamsungOSDService_Inst
+
+[SamsungOSDService_Inst]
+DisplayName = %SamsungOSDServiceDisplayName%
+ServiceType = 0x00000010
+StartType = 2
+;ServiceType = 0x00000020
+;StartType = 3
+ErrorControl = 1
+ServiceBinary = %13%\SamsungOSDService.exe
+
+[Strings]
+ManufacturerName="Samsung Electronics Co.,Ltd."
+ClassName="SoftwareComponent" 
+DiskName = "SamsungOSDService Installation Disk"
+SamsungOSDService.DeviceDesc = "SamsungOSDService Device"
+SamsungOSDServiceDisplayName="Samsung OSD Service"

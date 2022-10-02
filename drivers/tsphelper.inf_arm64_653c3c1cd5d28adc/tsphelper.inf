@@ -1,0 +1,81 @@
+/*++
+;
+;Copyright (c) Samsung Electronics Co., Ltd.  All rights reserved.
+;
+;Module Name:
+;    TspHelper.inf
+;
+;Abstract:
+;    INF file for installing the Pen filter driver.
+;
+;--*/
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=HIDClass
+ClassGuid={745a17a0-74d3-11d0-b6fe-00a0c90f57da}
+Provider=%ManufacturerName%
+CatalogFile=TspHelper.cat
+DriverVer = 08/13/2019,1.0.0.2
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+TspHelper.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%TspHelper.DeviceDesc%=TspHelper_Device, HID\STMT1234&Col01
+
+[TspHelper_Device.NT]
+Include = Keyboard.INF
+Needs = HID_Keyboard_Inst.NT
+CopyFiles=Drivers_Dir
+
+[TspHelper_Device.NT.HW]
+Include = Keyboard.INF
+Needs = HID_Keyboard_Inst.NT.HW
+AddReg=TspHelper_Device.HW.AddReg.NT
+
+[TspHelper_Device.HW.AddReg.NT]
+HKR,,"UpperFilters",0x00010000,"TspHelper"
+
+[Drivers_Dir]
+TspHelper.sys
+
+;-------------- Service installation
+[TspHelper_Device.NT.Services]
+AddService = TspHelper,, TspHelper_Service_Inst
+
+; -------------- TspHelper driver install sections
+[TspHelper_Service_Inst]
+DisplayName    = %TspHelper.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\TspHelper.sys
+LoadOrderGroup = PNP Filter
+
+[TspHelper_Device.NT.Wdf]
+KmdfService =  TspHelper, TspHelper_wdfsect
+
+[TspHelper_wdfsect]
+KmdfLibraryVersion = 1.11
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="Samsung Electronics Co.,Ltd."
+ClassName="HIDClass"
+DiskName = "TspHelper Installation Disk"
+TspHelper.DeviceDesc = "TspHelper Device"
+TspHelper.SVCDESC = "TspHelper Service"

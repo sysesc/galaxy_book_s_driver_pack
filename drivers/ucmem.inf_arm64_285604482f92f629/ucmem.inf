@@ -1,0 +1,69 @@
+/*++
+;
+;Copyright (c) Samsung Electronics Co., Ltd.  All rights reserved.
+;
+;Module Name:
+;    UcmEm.inf
+;
+;Abstract:
+;    INF file for installing the Samsung UcmEm driver.
+;
+;--*/
+[Version]
+Signature="$WINDOWS NT$"
+Class=USB
+ClassGuid={36FC9E60-C465-11CF-8056-444553540000}
+Provider=%ManufacturerName%
+CatalogFile=UcmEm.cat
+DriverVer = 07/11/2019,10.16.16.68
+
+[DestinationDirs]
+DefaultDestDir = 12
+UcmEm_Device_CoInstaller_CopyFiles = 11
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+UcmEm.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%UcmEm.DeviceDesc%=UcmEm_Device, ACPI\VEN_SAM&DEV_0605&SUBSYS_C153144D
+%UcmEm.DeviceDesc%=UcmEm_Device, ACPI\VEN_SAM&DEV_0605&SUBSYS_C17C144D
+
+[UcmEm_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+UcmEm.sys
+
+;-------------- Service installation
+[UcmEm_Device.NT.Services]
+AddService = UcmEm,%SPSVCINST_ASSOCSERVICE%, UcmEm_Service_Inst
+
+; -------------- UcmEm driver install sections
+[UcmEm_Service_Inst]
+DisplayName    = %UcmEm.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\UcmEm.sys
+
+[UcmEm_Device.NT.Wdf]
+KmdfService =  UcmEm, UcmEm_wdfsect
+[UcmEm_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="Samsung Electronics Co., Ltd.";
+DiskName = "Samsung UcmEm Installation Disk"
+UcmEm.DeviceDesc = "Samsung UcmEm Device"
+UcmEm.SVCDESC = "Samsung UcmEm Service"

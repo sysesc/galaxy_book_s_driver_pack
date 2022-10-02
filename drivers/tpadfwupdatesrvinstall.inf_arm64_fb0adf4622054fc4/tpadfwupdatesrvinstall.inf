@@ -1,0 +1,63 @@
+;
+; DCHUComponentTest.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=SoftwareComponent
+ClassGuid={5c4c3332-344d-483c-8739-259e934c9cc8}
+Provider=%ManufacturerName%
+CatalogFile=TPadFWUpdateSvc.cat
+DriverVer = 06/21/2020,1.0.0.13
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%TPadFWUpdateSvc.DeviceDesc%=TPadFWUpdateSvc_Device, SWC\VEN_SAMS&PID_5450
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+TPadFWupdateSvc.exe = 1
+TPadToastGenerator.exe = 1
+Space_ZI_040F.mng.bin = 1
+
+
+[DestinationDirs]
+DefaultDestDir = 13  ; copy to driverstore
+;DefaultDestDir = 16427
+
+[TPadFWUpdateSvc_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+TPadFWupdateSvc.exe
+TPadToastGenerator.exe
+Space_ZI_040F.mng.bin
+
+;-------------- Service installation
+[TPadFWUpdateSvc_Device.NT.Services]
+AddService = , 0x00000002
+AddService = TPadFWUpdateSvc,0x00000800, TPadFWUpdateService_Inst
+
+[TPadFWUpdateService_Inst]
+DisplayName = %TPadFWUpdateSvcDisplayName%
+ServiceType = 0x00000010
+StartType = 2
+;ServiceType = 0x00000020
+;StartType = 3
+ErrorControl = 1
+ServiceBinary = %13%\TPadFWupdateSvc.exe
+
+[Strings]
+ManufacturerName="Samsung Electronics Co.,Ltd."
+ClassName="SoftwareComponent" 
+DiskName = "TPadFWUpdateService Installation Disk"
+TPadFWUpdateSvc.DeviceDesc = "TPadFWUpdateService Device"
+TPadFWUpdateSvcDisplayName="TPad FWUpdate Service"

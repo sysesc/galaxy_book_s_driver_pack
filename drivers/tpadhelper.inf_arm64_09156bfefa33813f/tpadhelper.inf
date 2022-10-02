@@ -1,0 +1,86 @@
+;
+; TPadHelper.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=HIDClass ; TODO: edit Class
+ClassGuid={745a17a0-74d3-11d0-b6fe-00a0c90f57da} ; TODO: edit ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=TPadHelper.cat
+DriverVer = 12/16/2019,1.0.0.6
+
+[DestinationDirs]
+DefaultDestDir = 12
+
+; ================= Class section =====================
+
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+TPadHelper.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+;%TPadHelper.DeviceDesc%=TPadHelper_Device, Root\TPadHelper ; TODO: edit hw-id
+;%TPadHelper.DeviceDesc%=TPadHelper_Device, HID\VID_04E8&PID_A036&MI_00&Col03
+;%TPadHelper.DeviceDesc%=TPadHelper_Device, HID\VID_04E8&PID_A036&MI_00&Col03
+%TPadHelper.DeviceDesc%=TPadHelper_Device, HID\VID_04E8&PID_A055&MI_00&Col03
+
+[TPadHelper_Device.NT]
+Include = MSMOUSE.INF
+Needs = HID_Mouse_Inst.NT
+CopyFiles=Drivers_Dir
+
+[TPadHelper_Device.NT.HW]
+Include = MSMOUSE.INF
+Needs = HID_Mouse_Inst.NT.HW
+AddReg=TPadHelper_Device.HW.AddReg.NT
+
+[TPadHelper_Device.HW.AddReg.NT]
+HKR,,"UpperFilters",0x00010000,"TPadHelper"
+
+[Drivers_Dir]
+TPadHelper.sys
+
+;-------------- Service installation
+[TPadHelper_Device.NT.Services]
+Needs = HID_Keyboard_Inst.Services
+AddService = TPadHelper,, TPadHelper_Service_Inst
+
+; -------------- TPadHelper driver install sections
+[TPadHelper_Service_Inst]
+DisplayName    = %TPadHelper.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\TPadHelper.sys
+LoadOrderGroup = PNP Filter ;Extended Base
+
+[TPadHelper_Device.NT.Wdf]
+KmdfService =  TPadHelper, TPadHelper_wdfsect
+[TPadHelper_wdfsect]
+KmdfLibraryVersion = 1.15
+
+; -------------- PenWoAFilter component install sections
+[TPadHelper_Device.NT.Components]
+AddComponent = TPadHelper_TPadFWUpdateSvcInstall,,TPadHelper_ComponentInstall_UserSvcInstall
+
+[TPadHelper_ComponentInstall_UserSvcInstall]
+ComponentIds = VEN_SAMS&PID_5450
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="Samsung Electronics Co.,Ltd."
+ClassName="HIDClass" 
+DiskName = "TPadHelper Installation Disk"
+TPadHelper.DeviceDesc = "TPadHelper Device"
+TPadHelper.SVCDESC = "TPadHelper Service"

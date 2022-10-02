@@ -1,0 +1,76 @@
+/*++
+;
+;Copyright (c) Samsung Electronics Co., Ltd.  All rights reserved.
+;
+;Module Name:
+;    EmuEc.inf
+;
+;Abstract:
+;    INF file for installing the Samsung EmuEc device driver.
+;
+;--*/
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+CatalogFile=EmuEC.cat
+DriverVer = 02/04/2020,15.2.40.590
+
+[DestinationDirs]
+DefaultDestDir = 12
+EmuEC_Device_CoInstaller_CopyFiles = 11
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+EmuEC.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%EmuEC.DeviceDesc%=EmuEC_Device, ACPI\VEN_SAM&DEV_0604&SUBSYS_C17C144D
+
+[EmuEC_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+EmuEC.sys
+
+;-------------- Service installation
+[EmuEC_Device.NT.Services]
+AddService = EmuEC,%SPSVCINST_ASSOCSERVICE%, EmuEC_Service_Inst, EmuEC_EventLog_Inst
+
+; -------------- EmuEC driver install sections
+[EmuEC_Service_Inst]
+DisplayName    = %EmuEC.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\EmuEC.sys
+
+[EmuEC_Device.NT.Wdf]
+KmdfService =  EmuEC, EmuEC_wdfsect
+[EmuEC_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[EmuEC_EventLog_Inst]
+AddReg=EmuEC_EventLog_Inst.AddReg
+
+[EmuEC_EventLog_Inst.AddReg]
+HKR,, EventMessageFile, 0x00020000, "%%SystemRoot%%\System32\IoLogMsg.dll;%%SystemRoot%%\System32\drivers\EmuEC.sys"
+HKR,, TypesSupported,   0x00010003, 7
+HKR,, ProviderGuid,     0x00000000, "{A9FDD68F-C2D2-4E89-86A1-EC8BAEAEB51A}"
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="Samsung Electronics Co,.Ltd."
+DiskName = "EmuEC Installation Disk"
+EmuEC.DeviceDesc = "Samsung EmuEC Device"
+EmuEC.SVCDESC = "Samsung EmuEC Service"

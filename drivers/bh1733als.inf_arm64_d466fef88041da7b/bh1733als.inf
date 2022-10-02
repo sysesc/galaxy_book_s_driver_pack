@@ -1,0 +1,104 @@
+/*++
+;
+;
+;Module Name:
+;    BH1733Als.INF
+;
+;Abstract:
+;    INF file for installing the Sensors 2.0 BH1733 Ambient Light Sensor Driver
+;
+;--*/
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = Sensor
+ClassGuid   = {5175D334-C371-4806-B3BA-71FD53C9258D} ;[ToDo] Change for new driver
+Provider    = %ManufacturerName%
+CatalogFile = BH1733Als.cat                          ;[ToDo] Change for new driver
+DriverVer = 12/17/2019,1.0.3.8
+
+[DestinationDirs]
+DefaultDestDir = 12,UMDF
+UMDriverCopy = 12,UMDF                               ; copy to drivers\umdf
+Service_Copy=13
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]                                   ;[ToDo] Change for new driver
+BH1733Als.dll = 1,,
+KBService.exe = 1
+
+[Manufacturer]                                       ;[ToDo] Change for new driver
+%ManufacturerName% = BH1733Als_Device, NTARM64
+
+[BH1733Als_Device.NTARM64]                          ;[ToDo] Change for new driver
+%DeviceName% = MyDevice_Install, ACPI\VEN_SAM&DEV_0204
+
+; =================== UMDF Device ==================================
+
+[MyDevice_Install.NT]
+CopyFiles = UMDriverCopy
+CopyFiles=Service_Copy
+
+[MyDevice_Install.NT.hw]
+
+[UMDriverCopy]
+BH1733Als.dll
+
+[MyDevice_Install.NT.Services]
+AddService = WUDFRd,0x000001fa,WUDFRD_ServiceInstall
+AddService=Keyboard backlight service,0x00000c00, KeyboardBacklightService_ServiceInstall
+
+[MyDevice_Install.NT.CoInstallers]
+AddReg = CoInstallers_AddReg
+
+[WUDFRD_ServiceInstall]
+DisplayName     = %WudfRdDisplayName%
+ServiceType     = %SERVICE_KERNEL_DRIVER%
+StartType       = %SERVICE_DEMAND_START%
+ErrorControl    = %SERVICE_ERROR_NORMAL%
+ServiceBinary   = %12%\WUDFRd.sys
+
+; -------------- Keyboard backlight service install sections
+[KeyboardBacklightService_ServiceInstall]
+DisplayName    = %KeyboardBacklightService.SVCDESC%
+Description    = %KeyboardBacklightService.SVCDESC%
+ServiceType    = 0x10            ; SERVICE_WIN32_OWN_PROCESS
+StartType      = 2               ; SERVICE_AUTO_START
+ErrorControl   = 0               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\KBService.exe
+LoadOrderGroup = Base
+
+[Service_Copy]
+KBService.exe
+
+[MyDevice_Install.NT.Wdf]                            ;[ToDo] Change for new driver
+UmdfService              = BH1733Als, UmdfDriver_Install
+UmdfServiceOrder         = BH1733Als
+UmdfDirectHardwareAccess = AllowDirectHardwareAccess
+UmdfFileObjectPolicy     = AllowNullAndUnknownFileObjects
+UmdfFsContextUsePolicy   = CannotUseFsContexts
+UmdfHostProcessSharing = ProcessSharingDisabled		; Disabled becuase of GPS
+
+[UmdfDriver_Install]                                 ;[ToDo] Change for new driver
+UmdfLibraryVersion  = 2.15.0 
+ServiceBinary       = %12%\UMDF\BH1733Als.dll
+UmdfExtensions      = SensorsCx0102
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,"WUDFCoinstaller.dll"
+
+[Strings]                                            ;[ToDo] Change for new driver
+ManufacturerName    = "Samsung Electronics Co., Ltd."
+ClassName           = "Sensor"
+DiskName            = "BH1733 Ambient Light Sensor"
+WudfRdDisplayName   = "Windows Driver Foundation - User-mode Driver Framework Reflector"
+DeviceName          = "BH1733 Ambient Light Sensor"
+KeyboardBacklightService.SVCDESC = "Keyboard backlight service"
+
+SERVICE_KERNEL_DRIVER    = 1
+SERVICE_DEMAND_START     = 3
+SERVICE_ERROR_NORMAL     = 1
+
+;/******************** (C) COPYRIGHT 2015 ROHM CO.,LTD. ******* END OF FILE ****/

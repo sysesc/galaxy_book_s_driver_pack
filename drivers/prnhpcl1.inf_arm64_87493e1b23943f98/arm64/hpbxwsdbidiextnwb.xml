@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<bidi:Definition xmlns:bidi="http://schemas.microsoft.com/windows/2005/03/printing/bidi">
+  <Schema xmlns:nprt="http://schemas.microsoft.com/windows/2006/08/wdp/print">
+    <Property name="Printer">
+      <Property name="Configuration">
+        <Property name="DuplexUnit">
+          <Value name="Installed" query="nprt:PrinterConfiguration" filter="nprt:PrinterConfiguration/nprt:Finishings/nprt:DuplexerInstalled" type="BIDI_BOOL" optional="true" drvPrinterEvent="true">false</Value>
+        </Property>
+        <Property name="PhotoTray">
+          <Value name="Installed" query="nprt:PrinterConfiguration" filter="nprt:PrinterConfiguration/nprt:InputBins/nprt:InputBinEntry/nprt:Name=PhotoTray" type="BIDI_BOOL" optional="true" drvPrinterEvent="true">false</Value>
+        </Property>
+      </Property>
+      <Property name="Status">
+        <Property name="Summary">
+          <Value name="State" query="nprt:PrinterStatus" filter="//nprt:PrinterState" type="BIDI_STRING"/>
+          <Value name="StateReason" query="nprt:PrinterStatus" filter="//nprt:PrinterPrimaryStateReason" type="BIDI_STRING"/>
+        </Property>
+      </Property>
+    </Property>
+  </Schema>
+  <PortStatus>
+    <Status>
+      <Keyword>None</Keyword>
+      <Code>0</Code>
+      <Severity>0</Severity>
+    </Status>
+    <Status>
+      <Keyword>DoorOpen</Keyword>
+      <Code>7</Code>
+      <Severity>1</Severity>
+    </Status>
+    <Status>
+      <Keyword>MarkerFailure</Keyword>
+      <ResourceIdOffset>0</ResourceIdOffset>
+      <Severity>1</Severity>
+    </Status>
+    <Status>
+      <Keyword>MarkerSupplyLow</Keyword>
+      <Code>10</Code>
+      <Severity>2</Severity>
+    </Status>
+    <Status>
+      <Keyword>MarkerSupplyEmpty</Keyword>
+      <Code>6</Code>
+      <Severity>1</Severity>
+    </Status>
+    <Status>
+      <Keyword>MediaEmpty</Keyword>
+      <Code>3</Code>
+      <Severity>1</Severity>
+    </Status>
+    <Status>
+      <Keyword>MediaJam</Keyword>
+      <Code>2</Code>
+      <Severity>1</Severity>
+    </Status>
+    <Status>
+      <Keyword>MediaLow</Keyword>
+      <ResourceIdOffset>1</ResourceIdOffset>
+      <Severity>2</Severity>
+    </Status>
+    <Status>
+      <Keyword>MediaNeeded</Keyword>
+      <Code>5</Code>
+      <Severity>1</Severity>
+    </Status>
+    <Status>
+      <Keyword>OutputAreaFull</Keyword>
+      <Code>4</Code>
+      <Severity>1</Severity>
+    </Status>
+    <Status>
+      <Keyword>Paused</Keyword>
+      <ResourceIdOffset>3</ResourceIdOffset>
+      <Severity>3</Severity>
+    </Status>
+  </PortStatus>
+</bidi:Definition>

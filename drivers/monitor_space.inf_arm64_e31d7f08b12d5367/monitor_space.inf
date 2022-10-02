@@ -1,0 +1,45 @@
+;
+; Monitor for Space Project
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=Monitor
+ClassGUID={4d36e96e-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+CatalogFile=Monitor_Space.cat
+DriverVer = 01/10/2020,15.1.1.1
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%W767Monitor.DeviceDesc%=W767_Device.Install, Monitor\BOE07E7
+%W767Monitor.DeviceDesc%=W767_Device.Install, Monitor\BOE090C
+%W867Monitor.DeviceDesc%=W867_Device.Install, Monitor\SDC4142
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-------------- Service installation
+[W767_Device.Install]
+AddReg= W767_ScaleFactor
+
+[W767_ScaleFactor]
+HKR,,PreferredScaleFactor,%REG_DWORD%,125
+
+[W867_Device.Install]
+AddReg= W867_ScaleFactor
+
+[W867_ScaleFactor]
+HKR,,PreferredScaleFactor,%REG_DWORD%,250
+
+[Strings]
+REG_DWORD = 0x00010001
+ManufacturerName = "Samsung Electronics Co., Ltd."
+W767Monitor.DeviceDesc = "Samsung Monitor Device"
+W867Monitor.DeviceDesc = "Samsung Monitor Device"

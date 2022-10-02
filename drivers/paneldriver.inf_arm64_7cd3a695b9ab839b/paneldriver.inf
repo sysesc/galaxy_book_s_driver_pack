@@ -1,0 +1,72 @@
+;
+; PanelDriver for Space Project
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+CatalogFile=PanelDriver.cat
+DriverVer = 03/03/2020,0.1.0.5
+
+[DestinationDirs]
+DefaultDestDir = 12
+Service_Dir=13
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+PanelDriver.sys  = 1,,
+PanelManagerSvc.exe = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%PanelDriver.DeviceDesc%=PanelDriver_Device, ACPI\VEN_SAM&DEV_0101&SUBSYS_C17C144D
+
+[PanelDriver_Device.NT]
+CopyFiles=Drivers_Dir
+CopyFiles=Service_Dir
+
+[Drivers_Dir]
+PanelDriver.sys
+
+[Service_Dir]
+PanelManagerSvc.exe
+
+;-------------- Service installation
+[PanelDriver_Device.NT.Services]
+AddService = PanelDriver,%SPSVCINST_ASSOCSERVICE%, PanelDriver_Service_Inst
+AddService = PanelManagerSvc,0x000009f8, PanelManagerSvc_ServiceInstall
+
+; -------------- PanelDriver driver install sections
+[PanelDriver_Service_Inst]
+DisplayName    = %PanelDriver.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\PanelDriver.sys
+
+; -------------- Panel Manager service install sections
+[PanelManagerSvc_ServiceInstall]
+DisplayName    = %PanelManagerSvc.SVCDESC%
+ServiceType    = 0x10            ; SERVICE_KERNEL_DRIVER
+StartType      = 2               ; SERVICE_AUTO_START
+ErrorControl   = 0               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\PanelManagerSvc.exe
+LoadOrderGroup = Base
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="Samsung Electronics Co., Ltd."
+DiskName = "PanelDriver Installation Disk"
+PanelDriver.DeviceDesc = "Samsung PanelDriver Device"
+PanelDriver.SVCDESC = "Samsung PanelDriver Service"
+PanelManagerSvc.SVCDESC = "Samsung PanelManager Service"

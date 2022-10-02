@@ -1,0 +1,444 @@
+;***************************************************************************************
+;
+; Name		: ssudbus.inf  
+;
+; Function	: Install SAMSUNG Escape USB Composite driver
+;
+; Copyright (c) DEVGURU Co., Ltd. (www.devguru.co.kr)
+;
+;***************************************************************************************
+
+[version]
+signature="$CHICAGO$"
+Class=USB
+ClassGuid={36FC9E60-c465-11cf-8056-444553540000}
+Provider=%Provider%
+DriverVer=09/14/2021,2.17.16.0
+CatalogFile=ssudbus.cat
+
+[ControlFlags]
+ExcludeFromSelect = *
+
+;-----------------------------------------------------------------------------
+; Specify target paths...
+;-----------------------------------------------------------------------------
+[DestinationDirs]
+DefaultDestDir                  = 11                    ; LDID_SYS
+ssud.NT.CopyFiles        = 12                    ; system32\drivers
+filter.NT.CopyFiles      = 12
+ssud.Ext.NT.CopyFiles        = 12                    ; system32\drivers
+filter.Ext.NT.CopyFiles      = 12
+
+;-----------------------------------------------------------------------------
+; Specify the install disks.  A bit unwieldy during development.
+;-----------------------------------------------------------------------------
+
+[SourceDisksNames.x86]
+1 = %DiskString%,,,\i386
+
+[SourceDisksNames.amd64]
+1 = %DiskString%,,,\amd64
+
+[SourceDisksNames.arm64]
+1 = %DiskString%,,,\arm64
+
+[SourceDisksFiles]
+; filename = diskid[, [subdir] [, size]]
+ssudbus.sys = 1
+ssudqcfilter.sys = 1
+ssudbus2.sys = 1
+
+[SourceDisksFiles.arm64]
+; filename = diskid[, [subdir] [, size]]
+ssudbus.sys = 1
+ssudbus2.sys = 1
+
+;-----------------------------------------------------------------------------
+; Specify phone manufacturer, devices.
+;-----------------------------------------------------------------------------
+[Manufacturer]
+%ssud%=ssud, NTx86, NTamd64, NTarm64, NTx86.10.0, NTamd64.10.0, NTarm64.10.0
+
+
+;-----------------------------------------------------------------------------
+; The phone devices
+;-----------------------------------------------------------------------------
+; For Win2K
+[ssud]
+%USB\VID_04E8&PID_685D.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_685D ;CDC
+%USB\VID_04E8&PID_685E.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_685E ;UMS
+%USB\VID_04E8&PID_6860.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6860 ;MTP
+%USB\VID_04E8&PID_6861.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6861 ;RNDIS+UMS
+%USB\VID_04E8&PID_6862.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6862 ;RNDIS+MTP
+%USB\VID_04E8&PID_6863.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6863 ;RNDIS Only
+%USB\VID_04E8&PID_6864.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6864 ;RNDIS+Dynamic
+%USB\VID_04E8&PID_6866.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6866 ;PTP+Dynamic
+%USB\VID_04E8&PID_6867.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6867 ;RNDIS+PTP+Dynamic
+%USB\VID_04E8&PID_6868.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6868 ;Modem+Diagnostic+ADB
+%USB\VID_04E8&PID_686A.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686A ;MTP+Dynamic(CTC)
+%USB\VID_04E8&PID_686B.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686B ;UMS+Dynamic(CTC)
+%USB\VID_04E8&PID_686C.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686C ;MIDI
+%USB\VID_04E8&PID_686C.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_A50B
+%USB\VID_04E8&PID_685D.FilterDesc% = filter.Install, USB\VID_04E8&PID_685D&QCNet
+%USB\VID_04E8&PID_685E.FilterDesc% = filter.Install, USB\VID_04E8&PID_685E&QCNet
+%USB\VID_04E8&PID_6860.FilterDesc% = filter.Install, USB\VID_04E8&PID_6860&QCNet
+%USB\VID_04E8&PID_6861.FilterDesc% = filter.Install, USB\VID_04E8&PID_6861&QCNet
+%USB\VID_04E8&PID_6862.FilterDesc% = filter.Install, USB\VID_04E8&PID_6862&QCNet
+%USB\VID_04E8&PID_6864.FilterDesc% = filter.Install, USB\VID_04E8&PID_6864&QCNet
+%USB\VID_04E8&PID_6866.FilterDesc% = filter.Install, USB\VID_04E8&PID_6866&QCNet
+%USB\VID_04E8&PID_6867.FilterDesc% = filter.Install, USB\VID_04E8&PID_6867&QCNet
+%USB\VID_04E8&PID_686A.FilterDesc% = filter.Install, USB\VID_04E8&PID_686A&QCNet
+%USB\VID_04E8&PID_686B.FilterDesc% = filter.Install, USB\VID_04E8&PID_686B&QCNet
+%USB\VID_04E8&PID_686C.FilterDesc% = filter.Install, USB\VID_04E8&PID_686C&QCNet
+%USB\VID_04E8&PID_686C.FilterDesc% = filter.Install, USB\VID_04E8&PID_A50B&QCNet
+
+; For XP and later
+[ssud.NTx86]
+%USB\VID_04E8&PID_685D.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_685D ;CDC
+%USB\VID_04E8&PID_685E.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_685E ;UMS
+%USB\VID_04E8&PID_6860.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6860 ;MTP
+%USB\VID_04E8&PID_6861.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6861 ;RNDIS+UMS
+%USB\VID_04E8&PID_6862.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6862 ;RNDIS+MTP
+%USB\VID_04E8&PID_6863.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6863 ;RNDIS Only
+%USB\VID_04E8&PID_6864.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6864 ;RNDIS+Dynamic
+%USB\VID_04E8&PID_6866.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6866 ;PTP+Dynamic
+%USB\VID_04E8&PID_6867.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6867 ;RNDIS+PTP+Dynamic
+%USB\VID_04E8&PID_6868.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6868 ;Modem+Diagnostic+ADB
+%USB\VID_04E8&PID_686A.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686A ;MTP+Dynamic(CTC)
+%USB\VID_04E8&PID_686B.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686B ;UMS+Dynamic(CTC)
+%USB\VID_04E8&PID_686C.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686C ;MIDI
+%USB\VID_04E8&PID_686C.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_A50B
+%USB\VID_04E8&PID_685D.FilterDesc% = filter.Install, USB\VID_04E8&PID_685D&QCNet
+%USB\VID_04E8&PID_685E.FilterDesc% = filter.Install, USB\VID_04E8&PID_685E&QCNet
+%USB\VID_04E8&PID_6860.FilterDesc% = filter.Install, USB\VID_04E8&PID_6860&QCNet
+%USB\VID_04E8&PID_6861.FilterDesc% = filter.Install, USB\VID_04E8&PID_6861&QCNet
+%USB\VID_04E8&PID_6862.FilterDesc% = filter.Install, USB\VID_04E8&PID_6862&QCNet
+%USB\VID_04E8&PID_6864.FilterDesc% = filter.Install, USB\VID_04E8&PID_6864&QCNet
+%USB\VID_04E8&PID_6866.FilterDesc% = filter.Install, USB\VID_04E8&PID_6866&QCNet
+%USB\VID_04E8&PID_6867.FilterDesc% = filter.Install, USB\VID_04E8&PID_6867&QCNet
+%USB\VID_04E8&PID_686A.FilterDesc% = filter.Install, USB\VID_04E8&PID_686A&QCNet
+%USB\VID_04E8&PID_686B.FilterDesc% = filter.Install, USB\VID_04E8&PID_686B&QCNet
+%USB\VID_04E8&PID_686C.FilterDesc% = filter.Install, USB\VID_04E8&PID_686C&QCNet
+%USB\VID_04E8&PID_686C.FilterDesc% = filter.Install, USB\VID_04E8&PID_A50B&QCNet
+
+[ssud.NTx86.10.0]
+%USB\VID_04E8&PID_685D.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_685D ;CDC
+%USB\VID_04E8&PID_685E.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_685E ;UMS
+%USB\VID_04E8&PID_6860.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6860 ;MTP
+%USB\VID_04E8&PID_6861.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6861 ;RNDIS+UMS
+%USB\VID_04E8&PID_6862.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6862 ;RNDIS+MTP
+%USB\VID_04E8&PID_6863.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6863 ;RNDIS Only
+%USB\VID_04E8&PID_6864.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6864 ;RNDIS+Dynamic
+%USB\VID_04E8&PID_6866.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6866 ;PTP+Dynamic
+%USB\VID_04E8&PID_6867.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6867 ;RNDIS+PTP+Dynamic
+%USB\VID_04E8&PID_6868.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6868 ;Modem+Diagnostic+ADB
+%USB\VID_04E8&PID_686A.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_686A ;MTP+Dynamic(CTC)
+%USB\VID_04E8&PID_686B.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_686B ;UMS+Dynamic(CTC)
+%USB\VID_04E8&PID_686C.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_686C ;MIDI
+%USB\VID_04E8&PID_686C.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_A50B
+%USB\VID_04E8&PID_685D.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_685D&QCNet
+%USB\VID_04E8&PID_685E.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_685E&QCNet
+%USB\VID_04E8&PID_6860.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6860&QCNet
+%USB\VID_04E8&PID_6861.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6861&QCNet
+%USB\VID_04E8&PID_6862.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6862&QCNet
+%USB\VID_04E8&PID_6864.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6864&QCNet
+%USB\VID_04E8&PID_6866.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6866&QCNet
+%USB\VID_04E8&PID_6867.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6867&QCNet
+%USB\VID_04E8&PID_686A.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_686A&QCNet
+%USB\VID_04E8&PID_686B.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_686B&QCNet
+%USB\VID_04E8&PID_686C.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_686C&QCNet
+%USB\VID_04E8&PID_686C.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_A50B&QCNet
+
+[ssud.NTamd64]
+%USB\VID_04E8&PID_685D.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_685D ;CDC
+%USB\VID_04E8&PID_685E.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_685E ;UMS
+%USB\VID_04E8&PID_6860.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6860 ;MTP
+%USB\VID_04E8&PID_6861.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6861 ;RNDIS+UMS
+%USB\VID_04E8&PID_6862.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6862 ;RNDIS+MTP
+%USB\VID_04E8&PID_6863.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6863 ;RNDIS Only
+%USB\VID_04E8&PID_6864.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6864 ;RNDIS+Dynamic
+%USB\VID_04E8&PID_6866.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6866 ;PTP+Dynamic
+%USB\VID_04E8&PID_6867.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6867 ;RNDIS+PTP+Dynamic
+%USB\VID_04E8&PID_6868.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6868 ;Modem+Diagnostic+ADB
+%USB\VID_04E8&PID_686A.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686A ;MTP+Dynamic(CTC)
+%USB\VID_04E8&PID_686B.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686B ;UMS+Dynamic(CTC)
+%USB\VID_04E8&PID_686C.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686C ;MIDI
+%USB\VID_04E8&PID_686C.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_A50B
+%USB\VID_04E8&PID_685D.FilterDesc% = filter.Install, USB\VID_04E8&PID_685D&QCNet
+%USB\VID_04E8&PID_685E.FilterDesc% = filter.Install, USB\VID_04E8&PID_685E&QCNet
+%USB\VID_04E8&PID_6860.FilterDesc% = filter.Install, USB\VID_04E8&PID_6860&QCNet
+%USB\VID_04E8&PID_6861.FilterDesc% = filter.Install, USB\VID_04E8&PID_6861&QCNet
+%USB\VID_04E8&PID_6862.FilterDesc% = filter.Install, USB\VID_04E8&PID_6862&QCNet
+%USB\VID_04E8&PID_6864.FilterDesc% = filter.Install, USB\VID_04E8&PID_6864&QCNet
+%USB\VID_04E8&PID_6866.FilterDesc% = filter.Install, USB\VID_04E8&PID_6866&QCNet
+%USB\VID_04E8&PID_6867.FilterDesc% = filter.Install, USB\VID_04E8&PID_6867&QCNet
+%USB\VID_04E8&PID_686A.FilterDesc% = filter.Install, USB\VID_04E8&PID_686A&QCNet
+%USB\VID_04E8&PID_686B.FilterDesc% = filter.Install, USB\VID_04E8&PID_686B&QCNet
+%USB\VID_04E8&PID_686C.FilterDesc% = filter.Install, USB\VID_04E8&PID_686C&QCNet
+%USB\VID_04E8&PID_686C.FilterDesc% = filter.Install, USB\VID_04E8&PID_A50B&QCNet
+
+[ssud.NTamd64.10.0]
+%USB\VID_04E8&PID_685D.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_685D ;CDC
+%USB\VID_04E8&PID_685E.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_685E ;UMS
+%USB\VID_04E8&PID_6860.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6860 ;MTP
+%USB\VID_04E8&PID_6861.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6861 ;RNDIS+UMS
+%USB\VID_04E8&PID_6862.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6862 ;RNDIS+MTP
+%USB\VID_04E8&PID_6863.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6863 ;RNDIS Only
+%USB\VID_04E8&PID_6864.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6864 ;RNDIS+Dynamic
+%USB\VID_04E8&PID_6866.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6866 ;PTP+Dynamic
+%USB\VID_04E8&PID_6867.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6867 ;RNDIS+PTP+Dynamic
+%USB\VID_04E8&PID_6868.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6868 ;Modem+Diagnostic+ADB
+%USB\VID_04E8&PID_686A.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_686A ;MTP+Dynamic(CTC)
+%USB\VID_04E8&PID_686B.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_686B ;UMS+Dynamic(CTC)
+%USB\VID_04E8&PID_686C.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_686C ;MIDI
+%USB\VID_04E8&PID_686C.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_A50B
+%USB\VID_04E8&PID_685D.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_685D&QCNet
+%USB\VID_04E8&PID_685E.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_685E&QCNet
+%USB\VID_04E8&PID_6860.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6860&QCNet
+%USB\VID_04E8&PID_6861.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6861&QCNet
+%USB\VID_04E8&PID_6862.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6862&QCNet
+%USB\VID_04E8&PID_6864.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6864&QCNet
+%USB\VID_04E8&PID_6866.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6866&QCNet
+%USB\VID_04E8&PID_6867.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6867&QCNet
+%USB\VID_04E8&PID_686A.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_686A&QCNet
+%USB\VID_04E8&PID_686B.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_686B&QCNet
+%USB\VID_04E8&PID_686C.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_686C&QCNet
+%USB\VID_04E8&PID_686C.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_A50B&QCNet
+
+[ssud.NTarm64]
+%USB\VID_04E8&PID_685D.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_685D ;CDC
+%USB\VID_04E8&PID_685E.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_685E ;UMS
+%USB\VID_04E8&PID_6860.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6860 ;MTP
+%USB\VID_04E8&PID_6861.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6861 ;RNDIS+UMS
+%USB\VID_04E8&PID_6862.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6862 ;RNDIS+MTP
+%USB\VID_04E8&PID_6863.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6863 ;RNDIS Only
+%USB\VID_04E8&PID_6864.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6864 ;RNDIS+Dynamic
+%USB\VID_04E8&PID_6866.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6866 ;PTP+Dynamic
+%USB\VID_04E8&PID_6867.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6867 ;RNDIS+PTP+Dynamic
+%USB\VID_04E8&PID_6868.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_6868 ;Modem+Diagnostic+ADB
+%USB\VID_04E8&PID_686A.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686A ;MTP+Dynamic(CTC)
+%USB\VID_04E8&PID_686B.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686B ;UMS+Dynamic(CTC)
+%USB\VID_04E8&PID_686C.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_686C ;MIDI
+%USB\VID_04E8&PID_686C.DeviceDesc% = ssud.Install, USB\VID_04E8&PID_A50B
+%USB\VID_04E8&PID_685D.FilterDesc% = filter.Install, USB\VID_04E8&PID_685D&QCNet
+%USB\VID_04E8&PID_685E.FilterDesc% = filter.Install, USB\VID_04E8&PID_685E&QCNet
+%USB\VID_04E8&PID_6860.FilterDesc% = filter.Install, USB\VID_04E8&PID_6860&QCNet
+%USB\VID_04E8&PID_6861.FilterDesc% = filter.Install, USB\VID_04E8&PID_6861&QCNet
+%USB\VID_04E8&PID_6862.FilterDesc% = filter.Install, USB\VID_04E8&PID_6862&QCNet
+%USB\VID_04E8&PID_6864.FilterDesc% = filter.Install, USB\VID_04E8&PID_6864&QCNet
+%USB\VID_04E8&PID_6866.FilterDesc% = filter.Install, USB\VID_04E8&PID_6866&QCNet
+%USB\VID_04E8&PID_6867.FilterDesc% = filter.Install, USB\VID_04E8&PID_6867&QCNet
+%USB\VID_04E8&PID_686A.FilterDesc% = filter.Install, USB\VID_04E8&PID_686A&QCNet
+%USB\VID_04E8&PID_686B.FilterDesc% = filter.Install, USB\VID_04E8&PID_686B&QCNet
+%USB\VID_04E8&PID_686C.FilterDesc% = filter.Install, USB\VID_04E8&PID_686C&QCNet
+%USB\VID_04E8&PID_686C.FilterDesc% = filter.Install, USB\VID_04E8&PID_A50B&QCNet
+
+[ssud.NTarm64.10.0]
+%USB\VID_04E8&PID_685D.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_685D ;CDC
+%USB\VID_04E8&PID_685E.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_685E ;UMS
+%USB\VID_04E8&PID_6860.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6860 ;MTP
+%USB\VID_04E8&PID_6861.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6861 ;RNDIS+UMS
+%USB\VID_04E8&PID_6862.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6862 ;RNDIS+MTP
+%USB\VID_04E8&PID_6863.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6863 ;RNDIS Only
+%USB\VID_04E8&PID_6864.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6864 ;RNDIS+Dynamic
+%USB\VID_04E8&PID_6866.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6866 ;PTP+Dynamic
+%USB\VID_04E8&PID_6867.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6867 ;RNDIS+PTP+Dynamic
+%USB\VID_04E8&PID_6868.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_6868 ;Modem+Diagnostic+ADB
+%USB\VID_04E8&PID_686A.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_686A ;MTP+Dynamic(CTC)
+%USB\VID_04E8&PID_686B.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_686B ;UMS+Dynamic(CTC)
+%USB\VID_04E8&PID_686C.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_686C ;MIDI
+%USB\VID_04E8&PID_686C.DeviceDesc% = ssud.Install.Ext, USB\VID_04E8&PID_A50B
+%USB\VID_04E8&PID_685D.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_685D&QCNet
+%USB\VID_04E8&PID_685E.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_685E&QCNet
+%USB\VID_04E8&PID_6860.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6860&QCNet
+%USB\VID_04E8&PID_6861.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6861&QCNet
+%USB\VID_04E8&PID_6862.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6862&QCNet
+%USB\VID_04E8&PID_6864.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6864&QCNet
+%USB\VID_04E8&PID_6866.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6866&QCNet
+%USB\VID_04E8&PID_6867.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_6867&QCNet
+%USB\VID_04E8&PID_686A.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_686A&QCNet
+%USB\VID_04E8&PID_686B.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_686B&QCNet
+%USB\VID_04E8&PID_686C.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_686C&QCNet
+%USB\VID_04E8&PID_686C.FilterDesc% = filter.Install.Ext, USB\VID_04E8&PID_A50B&QCNet
+
+;-----------------------------------------------------------------------------
+;       How to install the WDM driver on NT
+;-----------------------------------------------------------------------------
+[ssud.Install.NT]
+CopyFiles       = ssud.NT.CopyFiles
+AddReg          = ssud.AddReg, ssud.NT.AddReg
+
+[filter.Install.NT]
+CopyFiles       = filter.NT.CopyFiles
+AddReg          = filter.AddReg
+
+[filter.Install.NTarm64]
+CopyFiles       = filter.NTarm64.CopyFiles
+AddReg          = filter.AddReg_NTarm64
+
+[ssud.Install.Ext.NT]
+CopyFiles       = ssud.Ext.NT.CopyFiles
+AddReg          = ssud.AddReg, ssud.NT.AddReg
+
+[filter.Install.Ext.NT]
+CopyFiles       = filter.Ext.NT.CopyFiles
+AddReg          = filter.AddReg
+
+[filter.Install.Ext.NTarm64]
+CopyFiles       = filter.Ext.NTarm64.CopyFiles
+AddReg          = filter.AddReg_NTarm64
+
+;-----------------------------------------------------------------------------
+;       How to start the WDM driver on NT
+;-----------------------------------------------------------------------------
+[ssud.Install.NT.Services]
+AddService      = dg_ssudbus, 2, ssud.AddService
+
+[filter.Install.NT.Services]
+AddService      = dg_ssudbus, 2, ssud.AddService
+AddService      = ssudqcfilter ,  , filter_Service_Inst 
+
+[filter.Install.NTarm64.Services]
+AddService      = dg_ssudbus, 2, ssud.AddService
+
+[ssud.Install.Ext.NT.Services]
+AddService      = dg_ssudbus, 2, ssud.Ext.AddService
+
+[filter.Install.Ext.NT.Services]
+AddService      = dg_ssudbus, 2, ssud.Ext.AddService
+AddService      = ssudqcfilter ,  , filter_Service_Inst 
+
+[filter.Install.Ext.NTarm64.Services]
+AddService      = dg_ssudbus, 2, ssud.Ext.AddService
+
+[ssud.Install.NT.HW]
+DelReg = ssud.Install.NT.HW.DelReg
+
+[ssud.Install.NT.HW.DelReg]
+HKR,,FriendlyName		; removes FriendlyName field in Enum key(device key)
+
+[filter.Install.NT.HW]
+AddReg = LowerFilterAddReg
+
+[LowerFilterAddReg]
+HKR,,"LowerFilters",0x00010000,"ssudqcfilter"
+
+[filter.Install.NTarm64.HW]
+AddReg = LowerFilterAddReg_NTarm64
+
+[LowerFilterAddReg_NTarm64]
+
+[ssud.Install.Ext.NT.HW]
+DelReg = ssud.Install.Ext.NT.HW.DelReg
+
+[ssud.Install.Ext.NT.HW.DelReg]
+HKR,,FriendlyName		; removes FriendlyName field in Enum key(device key)
+
+[filter.Install.Ext.NT.HW]
+AddReg = LowerFilterAddReg
+
+[filter.Install.Ext.NTarm64.HW]
+AddReg = LowerFilterAddReg_NTarm64
+
+[ssud.AddService]
+DisplayName             = %ssud.Service.DeviceDesc%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\ssudbus.sys
+LoadOrderGroup          = Base
+
+[filter_Service_Inst]
+DisplayName             = %ssudqcfilter.SvcDesc%
+ServiceType             = 1
+StartType               = 3
+ErrorControl            = 1
+ServiceBinary           = %12%\ssudqcfilter.sys
+
+[ssud.Ext.AddService]
+DisplayName             = %ssud.Service.DeviceDesc%
+ServiceType             = 1     ; SERVICE_KERNEL_DRIVER
+StartType               = 3     ; SERVICE_DEMAND_START
+ErrorControl            = 1     ; SERVICE_ERROR_NORMAL
+ServiceBinary           = %12%\ssudbus2.sys
+LoadOrderGroup          = Base
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (all platforms)
+;-----------------------------------------------------------------------------
+[ssud.AddReg]
+;HKR, Parameters, MultiConfigurationDescNum, 0x00010001, 0x0001
+
+[filter.AddReg]
+
+[filter.AddReg_NTarm64]
+
+;-----------------------------------------------------------------------------
+;       WDM registry entries (NT only)
+;-----------------------------------------------------------------------------
+[ssud.NT.AddReg]
+
+
+
+;----------------------------------------------------------------------------
+;       The WDM copy list for NT -- different because things go in
+;       different places.
+;-----------------------------------------------------------------------------
+[ssud.NT.CopyFiles]
+ssudbus.sys
+
+[filter.NT.CopyFiles]
+ssudbus.sys
+ssudqcfilter.sys
+
+[filter.NTarm64.CopyFiles]
+ssudbus.sys
+
+[ssud.Ext.NT.CopyFiles]
+ssudbus2.sys
+
+[filter.Ext.NT.CopyFiles]
+ssudbus2.sys
+ssudqcfilter.sys
+
+[filter.Ext.NTarm64.CopyFiles]
+ssudbus2.sys
+
+;****************************************************************************
+; Localizable Strings
+;****************************************************************************
+[strings]
+
+Provider    = "SAMSUNG Electronics Co., Ltd. "
+ssud     = "SAMSUNG Electronics Co., Ltd. "
+
+
+DiskString = "SAMSUNG Composite Device Driver installation disk"
+
+USB\VID_04E8&PID_6860.DeviceDesc  = "SAMSUNG Mobile USB Composite Device "
+USB\VID_04E8&PID_685D.DeviceDesc  = "SAMSUNG Mobile USB CDC Composite Device "
+USB\VID_04E8&PID_685E.DeviceDesc  = "SAMSUNG Mobile USB Composite Device "
+USB\VID_04E8&PID_6861.DeviceDesc  = "SAMSUNG Mobile USB Composite Device "
+USB\VID_04E8&PID_6862.DeviceDesc  = "SAMSUNG Mobile USB Composite Device "
+USB\VID_04E8&PID_6863.DeviceDesc  = "SAMSUNG Mobile USB Composite Device "
+USB\VID_04E8&PID_6864.DeviceDesc  = "SAMSUNG Mobile USB Composite Device "
+USB\VID_04E8&PID_6866.DeviceDesc  = "SAMSUNG Mobile USB Composite Device "
+USB\VID_04E8&PID_6867.DeviceDesc  = "SAMSUNG Mobile USB Composite Device "
+USB\VID_04E8&PID_6868.DeviceDesc  = "SAMSUNG Mobile USB Composite Device "
+USB\VID_04E8&PID_686A.DeviceDesc  = "SAMSUNG Mobile USB Composite Device "
+USB\VID_04E8&PID_686B.DeviceDesc  = "SAMSUNG Mobile USB Composite Device "
+USB\VID_04E8&PID_686C.DeviceDesc  = "SAMSUNG Mobile USB Composite Device "
+USB\VID_04E8&PID_685D.FilterDesc  = "SAMSUNG Mobile USB QCRMNET Filter Driver"
+USB\VID_04E8&PID_685E.FilterDesc  = "SAMSUNG Mobile USB QCRMNET Filter Driver"
+USB\VID_04E8&PID_6860.FilterDesc  = "SAMSUNG Mobile USB QCRMNET Filter Driver"
+USB\VID_04E8&PID_6861.FilterDesc  = "SAMSUNG Mobile USB QCRMNET Filter Driver"
+USB\VID_04E8&PID_6862.FilterDesc  = "SAMSUNG Mobile USB QCRMNET Filter Driver"
+USB\VID_04E8&PID_6864.FilterDesc  = "SAMSUNG Mobile USB QCRMNET Filter Driver"
+USB\VID_04E8&PID_6866.FilterDesc  = "SAMSUNG Mobile USB QCRMNET Filter Driver"
+USB\VID_04E8&PID_6867.FilterDesc  = "SAMSUNG Mobile USB QCRMNET Filter Driver"
+USB\VID_04E8&PID_686A.FilterDesc  = "SAMSUNG Mobile USB QCRMNET Filter Driver"
+USB\VID_04E8&PID_686B.FilterDesc  = "SAMSUNG Mobile USB QCRMNET Filter Driver"
+USB\VID_04E8&PID_686C.FilterDesc  = "SAMSUNG Mobile USB QCRMNET Filter Driver"
+
+ssud.Service.DeviceDesc = "SAMSUNG Mobile USB Composite Device Driver (DEVGURU Ver.)"
+ssudqcfilter.SvcDesc    = "SAMSUNG Mobile USB QCRMNET Filter Driver"

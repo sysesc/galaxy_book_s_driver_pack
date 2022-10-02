@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<de:DriverEvents xmlns:de="http://schemas.microsoft.com/windows/2011/08/printing/driverevents" schemaVersion="4.0">
+  <DriverEvent eventId="{A04CF0FC-1CEB-4C62-B967-999999999999}">
+    <Transport>USB</Transport>
+    <Transport>WSD</Transport>
+    <Query>\Printer.Status</Query>
+    <Trigger result="\Printer.Status.Summary:StateReason" comparison="EqualTo" value="closeDoorOrCover">
+      <StandardMessage resourceId="107" />
+    </Trigger>
+    <Trigger result="\Printer.Status.Summary:StateReason" comparison="EqualTo" value="trayEmptyOrOpen">
+      <StandardMessage resourceId="103" />
+    </Trigger>
+    <Trigger result="\Printer.Status.Summary:StateReason" comparison="EqualTo" value="jamInPrinter">
+      <StandardMessage resourceId="1401" />
+    </Trigger>
+    <Trigger result="\Printer.Status.Summary:StateReason" comparison="EqualTo" value="printerError">
+      <StandardMessage resourceId="109" />
+    </Trigger>
+    <Trigger result="\Printer.Status.Summary:StateReason" comparison="EqualTo" value="cartridgeLow">
+      <StandardMessage resourceId="2402" />
+    </Trigger>
+    <Trigger result="\Printer.Status.Summary:StateReason" comparison="EqualTo" value="cartridgeMissing">
+      <StandardMessage resourceId="2501" />
+    </Trigger>
+    <Trigger result="\Printer.Status.Summary:StateReason" comparison="EqualTo" value="cartridgeIncorrect">
+      <StandardMessage resourceId="1804" />
+    </Trigger>
+    <Trigger result="\Printer.Status.Summary:StateReason" comparison="EqualTo" value="outputBinFull">
+      <StandardMessage resourceId="119" />
+    </Trigger>
+  
+     <Trigger result="\Printer.Status.Summary:StateReason" comparison="EqualTo" value="DoorOpen">
+       <StandardMessage resourceId="107" />
+     </Trigger>
+     <Trigger result="\Printer.Status.Summary:StateReason" comparison="EqualTo" value="MediaEmpty">
+     	<StandardMessage resourceId="103" />
+     </Trigger>
+     <Trigger result="\Printer.Status.Summary:StateReason" comparison="EqualTo" value="MediaJam">
+     	<StandardMessage resourceId="121" />
+     </Trigger>
+  </DriverEvent>
+</de:DriverEvents>

@@ -1,0 +1,113 @@
+/*++
+;
+;Copyright (c) Microsoft Corporation.  All rights reserved.
+;
+;Module Name:
+;    SX9360GRIP.INF
+;
+;Abstract:
+;    INF file for installing the Sensors 2.0 SX9360 Proximity Driver
+;
+;--*/
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = Sensor
+ClassGuid   = {5175D334-C371-4806-B3BA-71FD53C9258D}
+Provider    = %ProviderName%
+CatalogFile = SX9360GRIP.cat
+DriverVer = 10/17/2019,1.0.0.3
+
+[DestinationDirs]
+;12 == Windows\System32\Drivers\UMDF
+DefaultDestDir = 12,UMDF
+SX9360ProxDriverCopy = 12,UMDF
+Service_Copy=13
+
+[SourceDisksNames]
+1 = %MediaDescription%,,,""
+
+[SourceDisksFiles]
+SX9360GRIP.dll   = 1,,
+GripResetService.exe = 1
+
+
+[Manufacturer]
+%ProviderName% = SX9360Prox_Device, NTARM64
+
+
+;*******************************
+; SX9360Prox Install Section
+;*******************************
+
+[SX9360Prox_Device.NTARM64]
+; DisplayName       Section          DeviceId
+; -----------       -------          --------
+%SX9360Prox_DevDesc% = SX9360Prox_Inst, ACPI\VEN_SAMM&DEV_0208
+
+[SX9360Prox_Inst.NT]
+CopyFiles = SX9360ProxDriverCopy
+CopyFiles=Service_Copy
+
+
+[SX9360Prox_Inst.NT.hw]
+
+[SX9360ProxDriverCopy]
+SX9360GRIP.dll
+
+;-------------- Service installation
+
+[SX9360Prox_Inst.NT.Services]
+AddService = WUDFRd,0x000001fa,WUDFRD_ServiceInstall
+AddService=Grip sensor Reset service,0x00000c00, GripResetService_ServiceInstall
+
+[SX9360Prox_Inst.NT.CoInstallers]
+AddReg = CoInstallers_AddReg
+
+[WUDFRD_ServiceInstall]
+DisplayName   = %WudfRdDisplayName%
+ServiceType   = %SERVICE_KERNEL_DRIVER%
+StartType     = %SERVICE_DEMAND_START%
+ErrorControl  = %SERVICE_ERROR_NORMAL%
+ServiceBinary = %12%\WUDFRd.sys
+
+; -------------- Grip Reset Service install sections
+[GripResetService_ServiceInstall]
+DisplayName    = %GripResetService.SVCDESC%
+Description    = %GripResetService.SVCDESC%
+ServiceType    = 0x10            ; SERVICE_WIN32_OWN_PROCESS
+StartType      = 2               ; SERVICE_AUTO_START
+ErrorControl   = 0               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\GripResetService.exe
+LoadOrderGroup = Base
+
+[Service_Copy]
+GripResetService.exe
+
+;-------------- WDF specific section
+
+[SX9360Prox_Inst.NT.Wdf]
+UmdfService              = SX9360Prox, SX9360Prox_Install
+UmdfServiceOrder         = SX9360Prox
+UmdfDirectHardwareAccess = AllowDirectHardwareAccess
+UmdfFsContextUsePolicy   = CannotUseFsContexts
+UmdfHostProcessSharing = ProcessSharingDisabled		; Disabled becuase of GPS
+
+[SX9360Prox_Install]
+UmdfLibraryVersion       = 2.15.0
+ServiceBinary            = %12%\UMDF\SX9360GRIP.dll
+UmdfExtensions           = SensorsCx0102
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,"WudfCoinstaller.dll"
+
+[Strings]
+MediaDescription         = "SX9360 proximity Driver"
+ProviderName             = "Samsung Electronics Co., Ltd."
+SX9360Prox_DevDesc       = "SX9360 Proximity"
+WudfRdDisplayName        = "Windows Driver Foundation - User-mode Driver Framework Reflector"
+GripResetService.SVCDESC = "Grip sensor Reset service"
+
+SERVICE_KERNEL_DRIVER    = 1
+SERVICE_DEMAND_START     = 3
+SERVICE_ERROR_NORMAL     = 1

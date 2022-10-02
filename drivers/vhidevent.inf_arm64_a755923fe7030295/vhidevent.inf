@@ -1,0 +1,74 @@
+;
+; VHIDEvent.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=HIDClass ; TODO: edit Class
+ClassGuid={745A17A0-74D3-11D0-B6FE-00A0C90F57DA} 
+Provider=%ManufacturerName%
+CatalogFile=VHIDEvent.cat
+DriverVer = 03/15/2019,1.0.0.1
+
+[DestinationDirs]
+DefaultDestDir = 12
+VHIDEvent_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+VHIDEvent.sys  = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%VHIDEvent.DeviceDesc%=VHIDEvent_Device, ACPI\VEN_SAMM&DEV_0901&SUBSYS_C17C144D
+
+[VHIDEvent_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+VHIDEvent.sys
+
+;-------------- Service installation
+[VHIDEvent_Device.NT.Services]
+AddService = VHIDEvent,%SPSVCINST_ASSOCSERVICE%, VHIDEvent_Service_Inst
+
+[VHIDEvent_Device.NT.HW]
+AddReg = FilterInst.NT.HW.AddReg
+
+[FilterInst.NT.HW.AddReg]
+HKR,,"UpperFilters",0x00010000,%HIDKMDF_Service%
+;HKR,,"MultiportDevice",%REG_DWORD%,0
+HKR,,"MultiportDevice",0x00010001,0
+
+
+; -------------- VHIDEvent driver install sections
+[VHIDEvent_Service_Inst]
+DisplayName    = %VHIDEvent.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\VHIDEvent.sys
+
+[VHIDEvent_Device.NT.Wdf]
+KmdfService =  VHIDEvent, VHIDEvent_wdfsect
+[VHIDEvent_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="Samsung Electronics Co.,Ltd."
+ClassName="HIDClass"
+DiskName = "VHIDEvent Installation Disk"
+VHIDEvent.DeviceDesc = "Samsung VHIDEvent Device"
+VHIDEvent.SVCDESC = "Samsung VHIDEvent Service"
+HIDKMDF_Service = "mshidkmdf"

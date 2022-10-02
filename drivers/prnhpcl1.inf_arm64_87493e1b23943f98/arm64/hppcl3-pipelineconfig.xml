@@ -1,0 +1,38 @@
+<!--
+
+Copyright (c) 2005 Microsoft Corporation
+
+All rights reserved.
+
+THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
+ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+PARTICULAR PURPOSE.
+
+File Name:
+
+   hppcl3-pipelineconfig.xml
+
+Abstract:
+
+    HP Raster XPS driver filter configuration file.
+
+-->
+
+<Filters>
+   <Filter dll            = "hpbxpsrender.dll"
+           clsid          = "{1BE6AFB0-E950-4e9b-80BB-CFD5EDB979E7}"
+           name           = "HP Raster XPS Filter">
+           <Input   guid  = "{4d47a67c-66cc-4430-850e-daf466fe5bc4}" comment="IID_IPrintReadStream" />
+           <Output  guid  = "{65bb7f1b-371e-4571-8ac7-912f510c1a38}" comment="IID_IPrintWriteStream"/> 
+   </Filter>
+   <!-- Filter service providers are not supported pre-Windows 7.  On Vista, it appears that the
+        Pipeline manager will not complete filter initialization if a FilterServiceProvider is
+        specified.  In order to make this sample portable, we use the fallback registry lookup
+        instead.  If you would like to experiment with the FilterServiceProvider support on 
+        Windows 7, uncomment the following line. -->
+   <FilterServiceProvider dll="hpbx3w81.dll" />
+</Filters>
+
+
+

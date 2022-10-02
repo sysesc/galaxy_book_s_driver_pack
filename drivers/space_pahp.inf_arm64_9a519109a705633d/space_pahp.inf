@@ -1,0 +1,47 @@
+[Version]                                                       		
+Signature = $WINDOWS NT$                                     		
+Class = Firmware                                                 	    
+ClassGuid = {f2e7dd72-6468-4e36-b6f1-6488f42c1b52}    		
+Provider = %DRIVER_PROVIDER%
+DriverVer = 11/24/2021, 1.0.0002.0000    		
+CatalogFile = space_pahp.cat   		
+PnpLockdown = 1
+
+[Manufacturer]          		
+%DRIVER_MANUFACTURER% = Firmware, NTarm64  
+  				
+[Firmware.NTarm64]   		
+%DRIVER_DESC% = Firmware_Install, UEFI\RES_{77812D78-1108-4754-8673-BBA67AA80D75}
+   				
+[Firmware_Install.NT]   		
+CopyFiles = Firmware_CopyFiles
+   				
+[Firmware_Install.NT.Hw]   		
+AddReg = Firmware_AddReg.Hw   
+
+[Firmware_AddReg.Hw]          		
+HKR,,FirmwareId,,{77812D78-1108-4754-8673-BBA67AA80D75}  		
+HKR,,FirmwareVersion,%REG_DWORD%,0x00020000  		
+HKR,,FirmwareFilename,,{77812D78-1108-4754-8673-BBA67AA80D75}\space_pahp.cap 
+   				
+[Firmware_CopyFiles]   		
+space_pahp.cap
+   				
+[DestinationDirs]   		
+DefaultDestDir = %DIRID_WINDOWS%, Firmware\{77812D78-1108-4754-8673-BBA67AA80D75}
+   		
+[SourceDisksFiles]   		
+space_pahp.cap = 1
+    				
+[SourceDisksNames]  		
+1 = %DISK_NAME%   
+
+[Strings]          		
+DRIVER_PROVIDER  = "Samsung Electronics Co., Ltd."  		
+DRIVER_MANUFACTURER  = "Samsung Electronics Co., Ltd."  		
+DRIVER_DESC = "SAMSUNG ELECTRONICS System Firmware"   		
+DISK_NAME     = "Firmware Update"   
+    				
+REG_DWORD = 0x00010001   		
+DIRID_WINDOWS = 10 
+ 

@@ -1,0 +1,104 @@
+/*++
+;
+;Copyright (c) Samsung Electronics Co., Ltd.  All rights reserved.
+;
+;Module Name:
+;    AppNodeEnu,.inf
+;
+;Abstract:
+;    INF file for installing the Samsung AppNodeEnum.
+;
+;--*/
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+CatalogFile=AppNodeEnum.cat
+DriverVer = 08/02/2019,1.0.0.13
+
+[DestinationDirs]
+DefaultDestDir = 12
+Service_Copy = 13
+
+[SourceDisksNames]
+1 = %DiskName%
+
+[SourceDisksFiles]
+AppNodeEnum.sys  = 1
+SamsungSystemHelper.exe = 1
+SamsungSystemServiceARM64.exe = 1
+SecRilProxy.dll = 1
+NativeRuntime.dll = 1
+vcruntime140.dll = 1
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTARM64
+
+[Standard.NTARM64]
+%AppNodeEnum.DeviceDesc%=AppNodeEnum_Device, ACPI\VEN_SAM&DEV_0603&SUBSYS_C17C144D   ; Space hw-id
+
+[AppNodeEnum_Device.NT]
+CopyFiles=Drivers_Dir
+CopyFiles=Service_Copy
+
+[Drivers_Dir]
+AppNodeEnum.sys
+
+[Service_Copy]
+SamsungSystemHelper.exe
+SamsungSystemServiceARM64.exe
+SecRilProxy.dll
+NativeRuntime.dll
+vcruntime140.dll
+
+; This is removed in a way to use AddComponent directives.
+[DriverSetting_AddReg]
+HKR, Parameters, Count, %REG_DWORD%, 1
+HKR, Parameters, AppNode1, %REG_SZ%,"GalaxyBook"
+
+
+;-------------- Service installation
+[AppNodeEnum_Device.NT.Services]
+AddService = AppNodeEnum,%SPSVCINST_ASSOCSERVICE%, AppNodeEnum_Service_Inst
+AddService = Samsung System Service,0x00000c00, SamsungSystemService_ServiceInstall
+
+; -------------- AppNodeEnum driver install sections
+[AppNodeEnum_Service_Inst]
+DisplayName    = %AppNodeEnum.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\AppNodeEnum.sys
+AddReg         = DriverSetting_AddReg
+
+; -------------- Samsung System Service install sections
+[SamsungSystemService_ServiceInstall]
+DisplayName    = %SamsungSystemService.SVCDESC%
+Description    = %SamsungSystemService.SVCDESC%
+ServiceType    = 0x10            ; SERVICE_WIN32_OWN_PROCESS
+StartType      = 2               ; SERVICE_AUTO_START
+ErrorControl   = 0               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\SamsungSystemServiceARM64.exe
+LoadOrderGroup = Base
+
+[AppNodeEnum_Device.NT.Wdf]
+KmdfService =  AppNodeEnum, AppNodeEnum_wdfsect
+
+[AppNodeEnum_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="Samsung Electronics Co., Ltd."
+DiskName = "AppNodeEnum Installation Disk"
+AppNodeEnum.DeviceDesc = "AppNodeEnum Device"
+AppNodeEnum.SVCDESC = "AppNodeEnum Service"
+SamsungSystemService.SVCDESC = "Samsung System Service"
+REG_DWORD               = 0x00010001
+REG_SZ                  = 0x00000000

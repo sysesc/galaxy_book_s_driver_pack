@@ -1,0 +1,293 @@
+/*++
+;
+;Copyright (c) Samsung Electronics Co., Ltd.  All rights reserved.
+;
+;Module Name:
+;    ModemCtrl.INF
+;
+;Abstract:
+;    INF file for installing the Modem Control driver for Xmm726x
+;
+;--*/
+
+;**********************************************************************************
+; Standard Section
+;**********************************************************************************
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+CatalogFile=ModemCtrl.cat
+DriverVer = 07/27/2020,13.24.21.688
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+ModemCtrl.sys=1
+SecRilProxy.dll=1
+SRil10.dll=1
+SAR.dll=1
+RCDService.exe=1
+MdmLdrSvc.exe=1
+ToastGenerator.exe=1
+SecUTSSvc.exe=1
+customizations.bin=1
+customizationsvzw.bin=1
+ToastResource_cpp_20190311.zip=1
+prov.db=1
+[DestinationDirs]
+System32_Dir = 11
+DefaultDestDir = 13
+TG_Dir=10,ToastGenerator
+
+[DefaultDestDir]
+SecRilProxy.dll
+RCDService.exe
+MdmLdrSvc.exe
+SecUTSSvc.exe
+Sril10.dll
+SAR.dll
+
+[System32_Dir] ;; need to check with HR
+customizations.bin
+customizationsvzw.bin
+prov.db
+
+[TG_Dir]
+ToastGenerator.exe
+ToastResource_cpp_20190311.zip
+
+
+[Strings]
+ManufacturerName ="Samsung Electronics Co., Ltd."
+DiskName = "ModemCtrl Installation Disk"
+ModemCtrlDeviceDesc = "ModemCtrl Device"
+ModemCtrlSvcDesc = "ModemCtrl Service"
+MdmLdrSvcSvcDesc = "Samsung Modem Loader Service"
+SRIL10DeviceDesc= "SRil10 Device"
+SARDeviceDesc= "SAR Device"
+WudfRdDisplayName = "Windows Driver Foundation - User-mode Driver Framework Reflector"
+SPSVCINST_ASSOCSERVICE= 0x00000002
+RCDServiceSvcDesc= "Samsung Radio Control Delegation Service"
+SecUTSSvcDesc="Samsung UTS Service"
+
+[Manufacturer]
+%ManufacturerName%=StandardDeviceList,NTARM64
+
+[StandardDeviceList.NTARM64]
+%ModemCtrlDeviceDesc%=ModemCtrl_Device, ACPI\VEN_SAM&DEV_0602&SUBSYS_C153144D
+%ModemCtrlDeviceDesc%=ModemCtrl_Device, ACPI\VEN_SAM&DEV_0602&SUBSYS_C17C144D 
+%ModemCtrlDeviceDesc%=ModemCtrl_Device, ACPI\VEN_SAM&DEV_0602
+
+%SRIL10DeviceDesc%=SRIL10_Device, MDMCTRL\SRIL02
+
+%SARDeviceDesc%=SAR_Device, MDMCTRL\SAR02
+
+;**********************************************************************************
+; Install Section - ModemCtrl Driver
+;**********************************************************************************
+
+[ModemCtrl_Device.NT]
+CopyFiles=ModemCtrlDriverCopyFiles,DefaultDestDir,System32_Dir,TG_Dir
+AddReg=Modem_Regs
+;AddReg=Modem_Regs,LogEnableReg
+
+[ModemCtrlDriverCopyFiles]
+ModemCtrl.sys,,,2
+
+[Modem_Regs]
+HKLM,SYSTEM\CurrentControlSet\Services\MdmLdrSvc,Version,0x01000,5.2.0.194
+HKLM,SYSTEM\CurrentControlSet\Services\MdmLdrSvc,CosaPkgVersion,0x01000,1.49
+HKLM,SYSTEM\CurrentControlSet\Services\RCD,UpdateProfileBySIM,0x01000,1
+; Will be handled by Sec Ext, HKLM,SYSTEM\CurrentControlSet\Services\MdmLdrSvc\Parameters,Distribute,0x11001,0x00000001
+; Block for Non-Verbose Logging, HKLM,SYSTEM\CurrentControlSet\Services\MdmLdrSvc\Parameters,ulZoneMask,0x11001,0x0004000E
+;HKLM,SYSTEM\CurrentControlSet\Services\Qcsubsys\Parameters,ModemRestartCrashDetection,0x11001,0x00000001              ;// Should remove when Official Releasing
+;HKLM,SYSTEM\CurrentControlSet\Services\Qcsubsys\Parameters,SkipMBAReloadBeforeBugcheck,0x11001,0x00000001              ;// Should remove when Official Releasing
+;HKLM,SYSTEM\CurrentControlSet\Services\QCCDI\Parameters,BugCheckList,0x00010000,"0x14B"                                ;// Should remove when Official Releasing
+;HKLM,SYSTEM\CurrentControlSet\Services\QCCDI\Parameters,ForceOfflineDumpType,0x11001,0x00000001                      ;// Should remove when Official Releasing
+HKLM,SYSTEM\CurrentControlSet\Services\ModemCtrl\Parameters,FeatureFlags,0x11001,0x00000008                             ;// To Remove IMS Node, QCMBRG Node
+HKLM,SYSTEM\CurrentControlSet\Services\QCDIAGROUTER\Parameters,ServerName,0x01000,127.0.0.1                            ;//IP 127.0.0.1
+HKLM,SYSTEM\CurrentControlSet\Services\Qcsubsys\Parameters,ChildRemovalTimeout,0x11001,0x00000008  ;// To avoid subsys BSOD during SSR. Case 03630090
+
+[LogEnableReg]
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL,BufferSize,0x11001,0x00000400
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL,ClockType,0x11001,0x00000001
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL,GUID,0x01000,{D1E78A37-DC87-42C8-A1BC-FCB6683D8F8F}
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL,LogFileMode,0x11001,0x90000400
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL,MaximumBuffers,0x11001,0x00000040
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL,MinimumBuffers,0x11001,0x00000040
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL,Start,0x11001,0x00000001
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL,Status,0x11001,0x00000000
+
+; RetailLog_RIL - 75BD61FB-874E-4D96-9D12-F270EC0D4DE5
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{75BD61FB-874E-4D96-9D12-F270EC0D4DE5},Enabled,0x11001,0x00000001
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{75BD61FB-874E-4D96-9D12-F270EC0D4DE5},EnableFlags,0x11001,0x0000ffff
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{75BD61FB-874E-4D96-9D12-F270EC0D4DE5},EnableLevel,0x11001,0x00000005
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{75BD61FB-874E-4D96-9D12-F270EC0D4DE5},Status,0x11001,0x00000000
+
+; RILROUTER - EA19F0BD-C199-479F-B057-066043D31DC0
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{EA19F0BD-C199-479F-B057-066043D31DC0},Enabled,0x11001,0x00000001
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{EA19F0BD-C199-479F-B057-066043D31DC0},EnableFlags,0x11001,0x0000ffff
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{EA19F0BD-C199-479F-B057-066043D31DC0},EnableLevel,0x11001,0x00000005
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{EA19F0BD-C199-479F-B057-066043D31DC0},Status,0x11001,0x00000000
+
+; SECRILPROXY - 1057AC89-C204-4F1A-9B91-A062748C341A
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{1057AC89-C204-4F1A-9B91-A062748C341A},Enabled,0x11001,0x00000001
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{1057AC89-C204-4F1A-9B91-A062748C341A},EnableFlags,0x11001,0x0000ffff
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{1057AC89-C204-4F1A-9B91-A062748C341A},EnableLevel,0x11001,0x00000005
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{1057AC89-C204-4F1A-9B91-A062748C341A},Status,0x11001,0x00000000     
+
+; MdmLdrSvc - 2170F42F-27B0-4B8B-AE84-949191000F66
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{2170F42F-27B0-4B8B-AE84-949191000F66},Enabled,0x11001,0x00000001
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{2170F42F-27B0-4B8B-AE84-949191000F66},EnableFlags,0x11001,0x0000ffff
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{2170F42F-27B0-4B8B-AE84-949191000F66},EnableLevel,0x11001,0x00000005
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{2170F42F-27B0-4B8B-AE84-949191000F66},Status,0x11001,0x00000000
+
+; ModemCtrl - 61c36369-d18e-4a5e-bac4-be1668a38bee
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{61c36369-d18e-4a5e-bac4-be1668a38bee},Enabled,0x11001,0x00000001
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{61c36369-d18e-4a5e-bac4-be1668a38bee},EnableFlags,0x11001,0x0000ffff
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{61c36369-d18e-4a5e-bac4-be1668a38bee},EnableLevel,0x11001,0x00000005
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{61c36369-d18e-4a5e-bac4-be1668a38bee},Status,0x11001,0x00000000
+
+; SAR - 30ad837b-b14d-4a80-ab1b-df53173b0996
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{30ad837b-b14d-4a80-ab1b-df53173b0996},Enabled,0x11001,0x00000001
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{30ad837b-b14d-4a80-ab1b-df53173b0996},EnableFlags,0x11001,0x0000ffff
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{30ad837b-b14d-4a80-ab1b-df53173b0996},EnableLevel,0x11001,0x00000005
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{30ad837b-b14d-4a80-ab1b-df53173b0996},Status,0x11001,0x00000000
+
+; RCD - A3BE41DF-D141-4ECD-8B8A-548195469053
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{A3BE41DF-D141-4ECD-8B8A-548195469053},Enabled,0x11001,0x00000001
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{A3BE41DF-D141-4ECD-8B8A-548195469053},EnableFlags,0x11001,0x0000ffff
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{A3BE41DF-D141-4ECD-8B8A-548195469053},EnableLevel,0x11001,0x00000005
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{A3BE41DF-D141-4ECD-8B8A-548195469053},Status,0x11001,0x00000000
+
+; MBB - 36797C31-A122-43DB-B296-36AB887335C3
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{36797C31-A122-43DB-B296-36AB887335C3},Enabled,0x11001,0x00000001
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{36797C31-A122-43DB-B296-36AB887335C3},EnableFlags,0x11001,0x0000ffff
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{36797C31-A122-43DB-B296-36AB887335C3},EnableLevel,0x11001,0x00000005
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{36797C31-A122-43DB-B296-36AB887335C3},Status,0x11001,0x00000000
+
+; SRILProxyUWP - 3FA5FE7E-604B-4CD3-8588-9D0460D99620
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{3FA5FE7E-604B-4CD3-8588-9D0460D99620},Enabled,0x11001,0x00000001
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{3FA5FE7E-604B-4CD3-8588-9D0460D99620},EnableFlags,0x11001,0x0000ffff
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{3FA5FE7E-604B-4CD3-8588-9D0460D99620},EnableLevel,0x11001,0x00000005
+HKLM,SYSTEM\CurrentControlSet\Control\WMI\Autologger\RetailLog_RIL\{3FA5FE7E-604B-4CD3-8588-9D0460D99620},Status,0x11001,0x00000000
+
+
+[ModemCtrl_Device.NT.Services]
+AddService = ModemCtrl,%SPSVCINST_ASSOCSERVICE%, ModemCtrl_ServiceInstall
+AddService = MdmLdrSvc,0x000009f8, ModemLoader_ServiceInstall
+AddService = RCD,0x00000020, RCD_ServiceInstall
+AddService = SecUTSSvc,0x00000020, UTS_ServiceInstall
+
+[ModemCtrl_ServiceInstall]
+DisplayName    = %ModemCtrlSvcDesc%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\ModemCtrl.sys
+LoadOrderGroup = Extended Base
+
+[ModemLoader_ServiceInstall]
+DisplayName    = %MdmLdrSvcSvcDesc%
+Description    = %MdmLdrSvcSvcDesc%
+ServiceType    = 0x10               ; SERVICE_KERNEL_DRIVER
+StartType      = 2               ; SERVICE_AUTO_START
+ErrorControl   = 0               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\MdmLdrSvc.exe
+LoadOrderGroup = Base
+
+[RCD_ServiceInstall]
+DisplayName    = %RCDServiceSvcDesc%
+Description    = %RCDServiceSvcDesc%
+ServiceType    = 0x10               ; SERVICE_KERNEL_DRIVER
+StartType      = 2               ; SERVICE_AUTO_START
+ErrorControl   = 0               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\RCDService.exe
+LoadOrderGroup = Base
+
+[UTS_ServiceInstall]
+DisplayName    = %SecUTSSvcDesc%
+Description    = %SecUTSSvcDesc%
+ServiceType    = 0x10               ; SERVICE_KERNEL_DRIVER
+StartType      = 2               ; SERVICE_AUTO_START
+ErrorControl   = 0               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\SecUTSSvc.exe
+LoadOrderGroup = Base
+;**********************************************************************************
+; Install Section - SRIL10 Driver
+;**********************************************************************************
+
+[SRIL10_Device.NT]
+;
+
+[SRIL10_Device.NT.hw]
+;Must have
+
+[SRIL10_Device.NT.Services]
+AddService=WUDFRd,0x000001fa,SRIL10_ServiceInstall
+
+[SRIL10_Device.NT.CoInstallers]
+AddReg=CoInstallers_AddReg
+
+[SRIL10_Device.NT.Wdf]
+UmdfService=SRil10,SRil10_Install
+UmdfServiceOrder=SRil10
+UmdfImpersonationLevel=Impersonation
+UmdfHostProcessSharing = ProcessSharingDisabled    ; Disabled because of GPS UMDF driver crash
+
+[SRil10_Install]
+UmdfLibraryVersion=2.0.0 
+ServiceBinary=%13%\SRil10.dll
+
+[SRIL10_ServiceInstall]
+DisplayName = %WudfRdDisplayName%
+ServiceType = 1     ;SERVICE_KERNEL_DRIVER
+StartType = 3       ;SERVICE_DEMAND_START
+ErrorControl = 1    ;SERVICE_ERROR_NORMAL
+ServiceBinary = %12%\WUDFRd.sys
+LoadOrderGroup = Base
+
+[CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,"WUDFCoinstaller.dll"
+
+
+;**********************************************************************************
+; Install Section - SAR Driver
+;**********************************************************************************
+
+[SAR_Device.NT]
+;
+
+[SAR_Device.NT.hw]
+;Must have
+
+[SAR_Device.NT.Services]
+AddService=WUDFRd,0x000001fa,SAR_ServiceInstall
+
+[SAR_Device.NT.CoInstallers]
+AddReg=SAR_CoInstallers_AddReg
+
+[SAR_Device.NT.Wdf]
+UmdfService=SAR,SAR_Install
+UmdfServiceOrder=SAR
+UmdfHostProcessSharing = ProcessSharingDisabled    ; Disabled because of GPS UMDF driver crash
+
+[SAR_Install]
+UmdfLibraryVersion=2.0.0 
+ServiceBinary=%13%\SAR.dll
+
+[SAR_ServiceInstall]
+DisplayName = %WudfRdDisplayName%
+ServiceType = 1     ;SERVICE_KERNEL_DRIVER
+StartType = 3       ;SERVICE_DEMAND_START
+ErrorControl = 1    ;SERVICE_ERROR_NORMAL
+ServiceBinary = %12%\WUDFRd.sys
+LoadOrderGroup = Base
+
+[SAR_CoInstallers_AddReg]
+HKR,,CoInstallers32,0x00010000,"WUDFCoinstaller.dll"
+
