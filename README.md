@@ -56,6 +56,8 @@ Dism /Unmount-Image /MountDir:"<mountpoint>" /Commit
 
 
 ### Repacking as ISO
-```
+[ADK - Download](https://learn.microsoft.com/en-us/windows-hardware/get-started/adk-install)
++ select "Deployment Tools" inside the installer
+```cmd
 'C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe' -u2 -m -b"c:\windows_iso_folder\boot\etfsboot.com" "C:\windows_iso_folder" "C:\windows_galaxybook_s.iso"
 ```
