@@ -2,9 +2,9 @@
 
 ### Get Windows for arm64 
 https://uupdump.net/
-+ !!!! only choose one Edition. Windows Home OR Pro when you are asked 
++ !!!! only choose one Edition. Windows Home OR Pro when you are asked.
 
-### Prepare a USB
+### Prepare a bootable USB stick
 https://rufus.ie/en/
 + Its simpler to flash the iso as it is, to the usb
 + You can then add the drivers to the usb separately
@@ -14,10 +14,9 @@ https://rufus.ie/en/
 + "...\sources\boot.wim"
 + "...\windows\system32\recovery\winre.wim"   <-- this one is inside install.wim
 
-I unzipped the drivers from this repo to 'c:\drivers'
-And flashed the windows iso from uupdump via rufus do an USB stick called D:\ in my case.
+I unzipped the drivers from this repo to 'c:\drivers' and flashed the windows iso from uupdump via rufus do an USB stick called D:\ in my case.
 
-### check your USB
+### Check your USB
 
 ```cmd
 Dism /Get-ImageInfo /imagefile:"D:\sources\install.wim"
@@ -38,28 +37,28 @@ The operation completed successfully.
 ```
 You can see that i only have windows 11 pro. If you have more that one, you need to change the "index" in the following mount commands, to add the drivers to the edition you would like to install.
 
-### create mountpoints
+### Create mountpoints
 ```cmd
 md C:\mount\install
 md C:\mount\boot
 md C:\mount\winre
 ```
 
-### mount images
+### Mount images
 ```cmd
 Dism /Mount-Image /ImageFile:"D:\sources\install.wim" /Index:1 /MountDir:"C:\mount\install"
 Dism /Mount-Image /ImageFile:"D:\sources\boot.wim" /Index:2 /MountDir:"C:\mount\boot"
 Dism /Mount-Image /ImageFile:"C:\mount\install\windows\system32\recovery\winre.wim" /Index:1 /MountDir:"C:\mount\winre"
 ```
 
-### install drivers
+### Install drivers
 ```powershell
 Add-WindowsDriver -Path "C:\mount\install" -Driver "C:\drivers" -Recurse
 Add-WindowsDriver -Path "C:\mount\boot" -Driver "C:\drivers" -Recurse
 Add-WindowsDriver -Path "C:\mount\winre" -Driver "C:\drivers" -Recurse
 ```
 
-### unmount images
+### Unmount images
 ```
 Dism /Unmount-Image /MountDir:C:\mount\winre /Commit
 Dism /Unmount-Image /MountDir:C:\mount\boot /Commit
@@ -77,7 +76,7 @@ Dism /Unmount-Image /MountDir:C:\mount\boot /Commit
 
 ## Other stuff
 
-### commands
+### Commands
 ```powershell
 # infos like index
 Dism /Get-ImageInfo /imagefile:"<path>.wim"
@@ -93,7 +92,7 @@ Dism /Unmount-Image /MountDir:C:\mount\winre /discard
 
 ### (optional) Repacking windows files plus added drivers as ISO
 [ADK - Download](https://learn.microsoft.com/en-us/windows-hardware/get-started/adk-install)
-+ select "Deployment Tools" inside the installer
++ select "Deployment Tools" inside the installer.
 ```cmd
 'C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe' -u2 -m -b"c:\windows_iso_folder\boot\etfsboot.com" "C:\windows_iso_folder" "C:\windows_galaxybook_s.iso"
 ```
