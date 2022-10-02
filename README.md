@@ -2,6 +2,8 @@
 
 ### Get Windows for arm64 
 https://uupdump.net/
++ !!!! only choose one Edition. Windows Home OR Pro when you are asked 
+
 ### Prepare a USB
 https://rufus.ie/en/
 + Its simpler to flash the iso as it is, to the usb
@@ -14,6 +16,27 @@ https://rufus.ie/en/
 
 I unzipped the drivers from this repo to 'c:\drivers'
 And flashed the windows iso from uupdump via rufus do an USB stick called D:\ in my case.
+
+### check your USB
+
+```cmd
+Dism /Get-ImageInfo /imagefile:"C:\winiso\sources\install.wim"
+```
+should display
+```
+Deployment Image Servicing and Management tool
+Version: 10.0.22621.1
+
+Details for image : C:\winiso\sources\install.wim
+
+Index : 1
+Name : Windows 11 Pro
+Description : Windows 11 Pro
+Size : 17,966,528,430 bytes
+
+The operation completed successfully.
+```
+You can see that i only have windows 11 pro. If you have more that one, you need to change the "index" in the following mount commands, to add the drivers to the edition you would like to install.
 
 ### create mountpoints
 ```cmd
