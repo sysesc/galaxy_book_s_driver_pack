@@ -55,6 +55,7 @@ Dism /Mount-Image /ImageFile:"C:\mount\install\windows\system32\recovery\winre.w
 ```
 
 ### Install drivers
+run in powershell
 ```powershell
 Add-WindowsDriver -Path "C:\mount\install" -Driver "C:\drivers" -Recurse
 Add-WindowsDriver -Path "C:\mount\boot" -Driver "C:\drivers" -Recurse
