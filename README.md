@@ -44,7 +44,7 @@ md C:\mount\boot
 md C:\mount\winre
 ```
 
-#### Put the drivers somewhere
+### Put the drivers somewhere
 I placed the drivers folder from this repo in "C:\\"
 
 ### Mount images
@@ -69,8 +69,10 @@ Dism /Unmount-Image /MountDir:C:\mount\boot /Commit
 Dism /Unmount-Image /MountDir:C:\mount\install /Commit
 ```
 
+### You are done
+
 ### (optional) Do the above steps just with install.wim again, but now using index 1
-index 2 is the windows installer.
+index 2 is the windows installer.  
 index 1 is the WinPE enviroment.
 ```
 Dism /Mount-Image /ImageFile:"D:\sources\boot.wim" /Index:1 /MountDir:C:\mount\boot
