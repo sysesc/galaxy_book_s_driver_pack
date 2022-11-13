@@ -97,9 +97,9 @@ Dism /Unmount-Image /MountDir:C:\mount\winre /discard
 ```
 
 ### (optional) Repacking windows files plus added drivers as ISO
-[ADK - Download](https://learn.microsoft.com/en-us/windows-hardware/get-started/adk-install)
-+ select "Deployment Tools" inside the installer.
-
+- Download and install ADK
+  - [ADK - Download](https://learn.microsoft.com/en-us/windows-hardware/get-started/adk-install)
+  - select "Deployment Tools" inside the installer.
 - Extract the windows ISO somewhere. Like "C:\windows_iso_folder"
 - Add the drivers, like above
 - run command below
