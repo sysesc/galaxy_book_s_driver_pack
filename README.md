@@ -45,7 +45,7 @@ md C:\mount\winre
 ```
 
 #### Put the drivers somewhere
-I placed the drivers folder from this repo in "C:\"
+I placed the drivers folder from this repo in "C:\\"
 
 ### Mount images
 ```cmd
