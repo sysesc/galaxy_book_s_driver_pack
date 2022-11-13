@@ -44,6 +44,9 @@ md C:\mount\boot
 md C:\mount\winre
 ```
 
+#### Put the drivers somewhere
+I placed the drivers folder from this repo in "C:\"
+
 ### Mount images
 ```cmd
 Dism /Mount-Image /ImageFile:"D:\sources\install.wim" /Index:1 /MountDir:"C:\mount\install"
