@@ -13,7 +13,7 @@
 
 + I put the drivers folder from this repo to "C:\\drivers".
 + In this example the USB stick is called "D:\\"
- + If your USB drive letter differs, you need to change the commands accordingly
+  + If your USB drive letter differs, you need to change the commands accordingly
 
 Open powershell as administrator and try this command.
 ```cmd
@@ -98,8 +98,8 @@ Dism /Unmount-Image /MountDir:C:\mount\winre /discard
 - Download and install ADK
   - [ADK - Download](https://learn.microsoft.com/en-us/windows-hardware/get-started/adk-install)
   - select "Deployment Tools" inside the installer.
-- Extract the windows ISO somewhere. Like "C:\windows_iso_folder"
-- Add the drivers, like above
+- Extract the windows ISO somewhere or use the existing usb stick with the added drivers. Like "C:\windows_iso_folder"
+- Add the drivers, if you have not already, like above
 - run command below
 ```cmd
 "C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg\oscdimg.exe" -u2 -m -b"c:\windows_iso_folder\boot\etfsboot.com" "C:\windows_iso_folder" "C:\windows_galaxybook_s.iso"
