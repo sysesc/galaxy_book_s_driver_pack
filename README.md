@@ -1,27 +1,25 @@
 ## Tutorial
 
 ### Get Windows for arm64 
-https://uupdump.net/
-+ !!!! only choose one Edition. Windows Home OR Pro when you are asked.
++ [https://uupdump.net/](https://uupdump.net/)
++ Choose only choose one Edition. Windows Home OR Pro.
++ Download the zip, extract is into a folder and run the .bat file inside to create the .iso
 
-### Prepare a bootable USB stick
-https://rufus.ie/en/
-+ Its simpler to flash the iso as it is, to the usb
-+ You can then add the drivers to the usb separately
+### Use Rufus to write the resulting .iso to a flashdrive
++ [Download](https://rufus.ie/en/)
 
-### What we will be modifying
-+ "...\sources\install.wim"                   
-+ "...\sources\boot.wim"
-+ "...\windows\system32\recovery\winre.wim"   <-- this one is inside install.wim
-
-I unzipped the drivers from this repo to 'c:\drivers' and flashed the windows iso from uupdump via rufus do an USB stick called D:\ in my case.
 
 ### Check your USB
 
++ I put the drivers folder from this repo to "C:\\drivers".
++ In this example the USB stick is called "D:\\"
+ + If your USB drive letter differs, you need to change the commands accordingly
+
+Open powershell as administrator and try this command.
 ```cmd
 Dism /Get-ImageInfo /imagefile:"D:\sources\install.wim"
 ```
-should display
+It should display:
 ```
 Deployment Image Servicing and Management tool
 Version: 10.0.22621.1
@@ -35,17 +33,17 @@ Size : 17,966,528,430 bytes
 
 The operation completed successfully.
 ```
-You can see that i only have windows 11 pro. If you have more that one, you need to change the "index" in the following mount commands, to add the drivers to the edition you would like to install.
 
-### Create mountpoints
+As you can see i only have windows 11 pro. If you have more than that just continue as normal, but when installing windows later, choose the windows edition that is displayed as having the index 1 here.
+
+All following commands can be run in powershell as administrator
+
+### Create the mountpoints
 ```cmd
 md C:\mount\install
 md C:\mount\boot
 md C:\mount\winre
 ```
-
-### Put the drivers somewhere
-I placed the drivers folder from this repo in "C:\\"
 
 ### Mount images
 ```cmd
@@ -55,7 +53,6 @@ Dism /Mount-Image /ImageFile:"C:\mount\install\windows\system32\recovery\winre.w
 ```
 
 ### Install drivers
-run in powershell
 ```powershell
 Add-WindowsDriver -Path "C:\mount\install" -Driver "C:\drivers" -Recurse
 Add-WindowsDriver -Path "C:\mount\boot" -Driver "C:\drivers" -Recurse
@@ -70,6 +67,7 @@ Dism /Unmount-Image /MountDir:C:\mount\install /Commit
 ```
 
 ### You are done
+Reboot and try the usb.
 
 ### (optional) Do the above steps just with install.wim again, but now using index 1
 index 2 is the windows installer.  
