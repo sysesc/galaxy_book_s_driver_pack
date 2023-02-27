@@ -1,6 +1,7 @@
-## Tutorial
 See also [this](https://github.com/mordaut97/galaxy_book_s_driver_pack/issues/1#issuecomment-1446087066
 ) comment by oktaykarakiya for another way to get this laptop up and running.
+
+## Tutorial creating a fresh arm64 iso usb with drivers
 
 ### Get Windows for arm64 
 + [https://uupdump.net/](https://uupdump.net/)
